@@ -4,21 +4,18 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
-import androidx.room.Database
 import androidx.room.withTransaction
-import com.hridoydas.hridoyapp.Data.Dogs
-import com.hridoydas.hridoyapp.Data.RemoteKeys
+import com.hridoydas.hridoyapp.Data.model.Dogs
+import com.hridoydas.hridoyapp.Data.model.RemoteKeys
 import com.hridoydas.hridoyapp.Data.database.DogsDatabase
 import com.hridoydas.hridoyapp.Network.ApiService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import okhttp3.internal.wait
 import retrofit2.HttpException
 import java.io.IOException
-import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
-class DogsRemoteMeditor
+class DogsRemoteMediator
 constructor(
     private val db: DogsDatabase,
     private val apiService: ApiService

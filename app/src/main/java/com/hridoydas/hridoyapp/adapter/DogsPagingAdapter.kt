@@ -6,7 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.hridoydas.hridoyapp.Data.Dogs
+import com.hridoydas.hridoyapp.Data.model.Dogs
 import com.hridoydas.hridoyapp.databinding.EachRowBinding
 import javax.inject.Inject
 

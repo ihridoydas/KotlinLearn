@@ -1,6 +1,6 @@
 package com.hridoydas.hridoyapp.Network
 
-import com.hridoydas.hridoyapp.Data.Dogs
+import com.hridoydas.hridoyapp.Data.model.Dogs
 import retrofit2.http.GET
 import retrofit2.http.Query
 

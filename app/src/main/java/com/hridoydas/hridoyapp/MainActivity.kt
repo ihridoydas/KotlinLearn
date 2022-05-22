@@ -2,15 +2,13 @@ package com.hridoydas.hridoyapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ProgressBar
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.hridoydas.hridoyapp.adapter.DogsPagingAdapter
 import com.hridoydas.hridoyapp.databinding.ActivityMainBinding
-import com.hridoydas.hridoyapp.databinding.EachRowBinding
-import com.hridoydas.hridoyapp.ui.MainViewModel
+import com.hridoydas.hridoyapp.ui.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
@@ -18,7 +16,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private val mainViewModel:MainViewModel by viewModels()
+    private val mainViewModel: MainViewModel by viewModels()
 
     @Inject
     lateinit var dogsPagingAdapter: DogsPagingAdapter

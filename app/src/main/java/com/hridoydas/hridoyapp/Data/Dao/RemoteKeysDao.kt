@@ -4,8 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.hridoydas.hridoyapp.Data.Dogs
-import com.hridoydas.hridoyapp.Data.RemoteKeys
+import com.hridoydas.hridoyapp.Data.model.RemoteKeys
 
 @Dao
 interface RemoteKeysDao {

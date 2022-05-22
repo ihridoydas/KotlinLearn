@@ -1,4 +1,4 @@
-package com.hridoydas.hridoyapp.Data
+package com.hridoydas.hridoyapp.Data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

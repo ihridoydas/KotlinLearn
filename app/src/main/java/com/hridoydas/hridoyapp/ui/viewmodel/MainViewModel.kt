@@ -1,11 +1,10 @@
-package com.hridoydas.hridoyapp.ui
+package com.hridoydas.hridoyapp.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
-import com.hridoydas.hridoyapp.Data.Dogs
-import com.hridoydas.hridoyapp.Data.Repository.DogsRemoteMeditor
+import com.hridoydas.hridoyapp.Data.model.Dogs
+import com.hridoydas.hridoyapp.Data.Repository.DogsRemoteMediator
 import com.hridoydas.hridoyapp.Data.database.DogsDatabase
 import com.hridoydas.hridoyapp.Network.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,7 +20,7 @@ class MainViewModel
         @OptIn(ExperimentalPagingApi::class)
         fun getAllDogs() : Flow<PagingData<Dogs>> = Pager(
             config = PagingConfig(50, enablePlaceholders = false),
-            remoteMediator = DogsRemoteMeditor(db,apiService)
+            remoteMediator = DogsRemoteMediator(db,apiService)
         ){
             db.getDogSDao().getAll()
         }.flow.cachedIn(viewModelScope)
