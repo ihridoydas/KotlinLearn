@@ -1,4 +1,4 @@
-# Somer Config for new Project(2022/5/21)
+# Somer Config for new Project(2022/5/28)
 ## Plugins
 
 ```
@@ -95,6 +95,9 @@ dependencies {
     implementation("io.coil-kt:coil:2.1.0")
 
     implementation "androidx.multidex:multidex:$multidex_version"
+    
+    //SwipeRefresh
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
 
 }
