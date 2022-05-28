@@ -10,18 +10,18 @@ import com.hridoydas.newpaging3.Adapter.Item.ItemSectionDecoration
 import com.hridoydas.newpaging3.Adapter.TesttAdapter
 
 class RecyclerViewSectionHeader : AppCompatActivity() {
-    private val swipeRefreshLayout:SwipeRefreshLayout by lazy {
+    private val swipeRefreshLayout: SwipeRefreshLayout by lazy {
         findViewById(R.id.swipeRefreshlayout)
     }
 
 
-    private val recyclerView:RecyclerView by lazy {
+    private val recyclerView: RecyclerView by lazy {
         findViewById(R.id.recyclerview)
     }
 
 
-    private lateinit var adpater : TesttAdapter
-    private lateinit var layoutManager : LinearLayoutManager
+    private lateinit var adpater: TesttAdapter
+    private lateinit var layoutManager: LinearLayoutManager
     private lateinit var itemSectionDecoration: ItemSectionDecoration
 
 
@@ -30,14 +30,14 @@ class RecyclerViewSectionHeader : AppCompatActivity() {
         setContentView(R.layout.activity_recycler_view_section_header)
 
         val actionBar = supportActionBar
-        actionBar!!.title ="Recycler Section Header"
+        actionBar!!.title = "Recycler Section Header"
         actionBar.setDisplayHomeAsUpEnabled(true)
 
         initList()
         loadmore()
     }
 
-    private fun initList(){
+    private fun initList() {
         swipeRefreshLayout.setOnRefreshListener {
             swipeRefreshLayout.isRefreshing = false
             reload()
@@ -47,28 +47,28 @@ class RecyclerViewSectionHeader : AppCompatActivity() {
             loadmore()
         }
 
-        itemSectionDecoration  = ItemSectionDecoration(this){
+        itemSectionDecoration = ItemSectionDecoration(this) {
             adpater.list
         }
         recyclerView.addItemDecoration(itemSectionDecoration)
 
-        recyclerView.layoutManager= layoutManager
+        recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adpater
 
     }
 
-    private fun reload(){
-        val list = dummyData(0,20)
-        recyclerView.post{
+    private fun reload() {
+        val list = dummyData(0, 20)
+        recyclerView.post {
             adpater.reload(list)
 
         }
     }
 
-    private fun loadmore(){
+    private fun loadmore() {
 
-        val list = dummyData(adpater.itemCount,20)
-        recyclerView.post{
+        val list = dummyData(adpater.itemCount, 20)
+        recyclerView.post {
             adpater.loadMore(list)
 
         }
@@ -76,21 +76,22 @@ class RecyclerViewSectionHeader : AppCompatActivity() {
 
     // Group Item by Date
 
-    private fun dummyData(offset:Int ,limit:Int): MutableList<ItemModel>{
+    private fun dummyData(offset: Int, limit: Int): MutableList<ItemModel> {
 
         val list = mutableListOf<ItemModel>()
 
-        var itemModel:ItemModel
+        var itemModel: ItemModel
 
-        for (i in offset until offset + limit){
-            itemModel = when(i){
-                in 0..15->{
-                    ItemModel("title $i",getDummyDataString("01"))
+        for (i in offset until offset + limit) {
+            itemModel = when (i) {
+                in 0..15 -> {
+                    ItemModel("title $i", getDummyDataString("01"))
                 }
-                in 16..30->{
-                    ItemModel("title $i",getDummyDataString("02"))
-                }else ->{
-                    ItemModel("title $i",getDummyDataString("03"))
+                in 16..30 -> {
+                    ItemModel("title $i", getDummyDataString("02"))
+                }
+                else -> {
+                    ItemModel("title $i", getDummyDataString("03"))
                 }
 
             }
@@ -101,7 +102,7 @@ class RecyclerViewSectionHeader : AppCompatActivity() {
 
     }
 
-    private fun getDummyDataString(day:String):String{
+    private fun getDummyDataString(day: String): String {
         return "2021-10-$day"
     }
 }

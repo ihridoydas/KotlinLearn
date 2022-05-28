@@ -7,22 +7,21 @@ import com.hridoydas.newpaging3.R
 
 class SectionViewHolder(
     context: Context
-)
-    :FrameLayout(context) {
+) : FrameLayout(context) {
 
-        private lateinit var textViewDate : TextView
+    private lateinit var textViewDate: TextView
 
-     init {
-         inflate(context, R.layout.view_holder_section,this)
-         findView()
-     }
+    init {
+        inflate(context, R.layout.view_holder_section, this)
+        findView()
+    }
 
-    private fun findView(){
+    private fun findView() {
         textViewDate = findViewById(R.id.textViewDate)
 
     }
 
-    fun setDate(dateString:String){
+    fun setDate(dateString: String) {
         textViewDate.text = dateString
     }
 
