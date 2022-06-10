@@ -3,12 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../layout/custom_preview.xml" value="0.11803444782168186" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.234478759765625" />
-        <entry key="app/src/main/res/layout/activity_recycler_view_section_header.xml" value="0.10536980749746708" />
-        <entry key="app/src/main/res/layout/activity_retrofit_live_data_with_flow_api.xml" value="0.421195652173913" />
+        <entry key="app/src/main/res/layout/activity_recycler_view_section_header.xml" value="0.23489709021231084" />
+        <entry key="app/src/main/res/layout/activity_retrofit_live_data_with_flow_api.xml" value="0.19468655793563175" />
         <entry key="app/src/main/res/layout/activity_second.xml" value="0.45989583333333334" />
         <entry key="app/src/main/res/layout/each_row.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/layout/error_state.xml" value="0.18489583333333334" />
+        <entry key="app/src/main/res/layout/one_layout.xml" value="0.18573608398437502" />
         <entry key="app/src/main/res/layout/view_holder_item.xml" value="0.10486322188449848" />
         <entry key="app/src/main/res/layout/view_holder_section.xml" value="0.215625" />
       </map>

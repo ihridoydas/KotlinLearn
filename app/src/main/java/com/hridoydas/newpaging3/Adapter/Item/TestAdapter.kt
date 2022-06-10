@@ -1,7 +1,6 @@
-package com.hridoydas.newpaging3.Adapter
+package com.hridoydas.newpaging3.Adapter.Item
 
 import android.annotation.SuppressLint
-import android.content.ClipData
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +8,7 @@ import com.hridoydas.newpaging3.Adapter.Item.ItemModel
 import com.hridoydas.newpaging3.Adapter.Item.ItemViewHolder
 import com.hridoydas.newpaging3.R
 
-class TesttAdapter(private val onLoadMore:()->Unit): RecyclerView.Adapter<ItemViewHolder>(){
+class TestAdapter(private val onLoadMore:()->Unit): RecyclerView.Adapter<ItemViewHolder>(){
 
     val list = mutableListOf<ItemModel>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -27,7 +26,6 @@ class TesttAdapter(private val onLoadMore:()->Unit): RecyclerView.Adapter<ItemVi
     }
 
     override fun getItemCount(): Int {
-
         return list.size
     }
 
@@ -38,6 +36,8 @@ class TesttAdapter(private val onLoadMore:()->Unit): RecyclerView.Adapter<ItemVi
         notifyDataSetChanged()
 
     }
+
+    //cloud brain -> reload method
 
     fun loadMore(list: MutableList<ItemModel>){
         this.list.addAll(list)

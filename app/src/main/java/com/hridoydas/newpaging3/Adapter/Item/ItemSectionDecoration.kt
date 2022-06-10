@@ -96,7 +96,6 @@ class ItemSectionDecoration(
                 val top = childView.top - sectionItemHeight
                 drawSectionView(c, itemModel.date, top)
             } else {
-
                 drawDivider(c, childView)
             }
         }
@@ -200,7 +199,6 @@ class ItemSectionDecoration(
             val display =
                 (context.getSystemService(Context.WINDOW_SERVICE) as WindowManager).defaultDisplay
             display.getMetrics(outMatrics)
-
 
         }
         return outMatrics.widthPixels

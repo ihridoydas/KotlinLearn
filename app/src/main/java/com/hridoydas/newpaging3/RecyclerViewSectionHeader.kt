@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.hridoydas.newpaging3.Adapter.Item.ItemModel
 import com.hridoydas.newpaging3.Adapter.Item.ItemSectionDecoration
-import com.hridoydas.newpaging3.Adapter.TesttAdapter
+import com.hridoydas.newpaging3.Adapter.Item.TestAdapter
 
 class RecyclerViewSectionHeader : AppCompatActivity() {
     private val swipeRefreshLayout: SwipeRefreshLayout by lazy {
@@ -20,7 +20,7 @@ class RecyclerViewSectionHeader : AppCompatActivity() {
     }
 
 
-    private lateinit var adpater: TesttAdapter
+    private lateinit var adpater: TestAdapter
     private lateinit var layoutManager: LinearLayoutManager
     private lateinit var itemSectionDecoration: ItemSectionDecoration
 
@@ -43,13 +43,14 @@ class RecyclerViewSectionHeader : AppCompatActivity() {
             reload()
         }
         layoutManager = LinearLayoutManager(this)
-        adpater = TesttAdapter {
+        adpater = TestAdapter {
             loadmore()
         }
 
         itemSectionDecoration = ItemSectionDecoration(this) {
             adpater.list
         }
+
         recyclerView.addItemDecoration(itemSectionDecoration)
 
         recyclerView.layoutManager = layoutManager
@@ -85,13 +86,13 @@ class RecyclerViewSectionHeader : AppCompatActivity() {
         for (i in offset until offset + limit) {
             itemModel = when (i) {
                 in 0..15 -> {
-                    ItemModel("title $i", getDummyDataString("01"))
+                    ItemModel("title $i", getDummyDateString("01"))
                 }
                 in 16..30 -> {
-                    ItemModel("title $i", getDummyDataString("02"))
+                    ItemModel("title $i", getDummyDateString("02"))
                 }
                 else -> {
-                    ItemModel("title $i", getDummyDataString("03"))
+                    ItemModel("title $i", getDummyDateString("03"))
                 }
 
             }
@@ -102,7 +103,7 @@ class RecyclerViewSectionHeader : AppCompatActivity() {
 
     }
 
-    private fun getDummyDataString(day: String): String {
+    private fun getDummyDateString(day: String): String {
         return "2021-10-$day"
     }
 }
