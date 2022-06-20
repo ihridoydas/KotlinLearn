@@ -203,6 +203,5 @@ class ItemSectionDecoration(
         }
         return outMatrics.widthPixels
 
-
     }
 }

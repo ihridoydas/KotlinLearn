@@ -34,7 +34,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(recyclesectionHeaderIntent)
         }
 
-
+        binding.SpinerButton.setOnClickListener{
+            val spinner = Intent(this,SpinnerWithSearchDialog::class.java)
+            startActivity(spinner)
+        }
 
 
     }
