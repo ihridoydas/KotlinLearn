@@ -4,8 +4,8 @@ plugins {
     //Room
     id 'kotlin-kapt'
     id 'kotlin-android'
-    id 'kotlin-android-extensions'
-    id("com.google.devtools.ksp") version "1.6.10-1.0.2"
+    //id 'kotlin-android-extensions'
+//    id("com.google.devtools.ksp") version "1.6.10-1.0.2"
     id 'dagger.hilt.android.plugin'
 }
 
@@ -84,7 +84,7 @@ dependencies {
     // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$roomVersion")
     // To use Kotlin Symbolic Processing (KSP)
-    ksp("androidx.room:room-compiler:$roomVersion")
+    //ksp("androidx.room:room-compiler:$roomVersion")
 
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$roomVersion")
