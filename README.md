@@ -1,4 +1,4 @@
-# Somer Config for new Project(2022/5/21)
+# Somer Config for new Project(2022/7/07)
 ## Plugins
 
 ```
@@ -7,6 +7,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id("com.google.devtools.ksp") version "1.6.10-1.0.2"
 }
 ```
 ## Add View Binding in Android block
@@ -52,6 +53,9 @@ dependencies {
     testImplementation "androidx.room:room-testing:$room_version"
             // optional - Paging 3 Integration
     implementation "androidx.room:room-paging:2.5.0-alpha01"
+    
+       // To use Kotlin Symbolic Processing (KSP)
+    ksp("androidx.room:room-compiler:$roomVersion")
 
     //Paging3
     implementation "androidx.paging:paging-runtime-ktx:$paging_version3"
