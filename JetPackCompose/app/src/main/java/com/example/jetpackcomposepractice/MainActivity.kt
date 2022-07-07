@@ -1,13 +1,11 @@
 package com.example.jetpackcomposepractice
 
-import android.content.ClipData
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.animateContentSize
-import androidx.compose.animation.core.Easing
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
@@ -28,11 +26,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.modifier.modifierLocalConsumer
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
@@ -53,12 +50,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
-import coil.compose.rememberImagePainter
-import com.example.jetpackcomposepractice.ui.theme.AnotherActivity
-import com.example.jetpackcomposepractice.ui.theme.JetPackComposePracticeTheme
-import com.example.jetpackcomposepractice.ui.theme.Shapes
-import com.example.jetpackcomposepractice.ui.theme.SplashFont
-import kotlinx.coroutines.withContext
+import coil.request.ImageRequest
+import com.example.jetpackcomposepractice.ui.theme.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,7 +63,11 @@ class MainActivity : ComponentActivity() {
                     //modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Column {
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
                         // ColumnExample()
                         //LazyRowExample()
                         //LazyColumnExample()
@@ -97,15 +94,42 @@ class MainActivity : ComponentActivity() {
                         //BoxSimpleExample()
                         //  SuperScriptSample("Hello", "world!")
 
-                        ExpendableCardExample()
+                        //ExpendableCardExample()
 
-                        //Navigate Another Button
+                        //GoogleButton()
+
+                        // CoilImage()
+
+                        //Gradient Button Use with parameters
+                        /*
+                        GradiantButtonFirst(
+                            text = "Button",
+                            textColor = Color.White,
+                            gradient = Brush.horizontalGradient(
+                                colors = listOf(
+                                    color1, color2
+                                )
+                            ),
+                            onClick = {
+                                Log.d("Check","Clicked")
+                            },
+                        )
+
+                         */
+
+                        //Navigate Another Button (By activity)
                         Button(onClick = {
-                            val navigate = Intent(this@MainActivity, AnotherActivity::class.java)
+                            val navigate = Intent(this@MainActivity, LazyColumnActivity::class.java)
                             startActivity(navigate)
                         }) {
-                            Text(text = "Navigate Another Activity")
+                            Text(text = "Navigate Lazy Column Activity")
                         }
+//                        Button(onClick = {
+//                            val navigate = Intent(this@MainActivity, AnotherActivity::class.java)
+//                            startActivity(navigate)
+//                        }) {
+//                            Text(text = "Navigate Another 2 Activity")
+//                        }
 
                         /*
                        Column {
@@ -873,14 +897,137 @@ fun ExpendableCardExample() {
                     overflow = TextOverflow.Ellipsis,
 
                     )
-
             }
-
 
         }
 
     }
 }
+
+//Button With Progress Bar
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+fun GoogleButton(
+    text: String = "Sign Up With Google.",
+    loadingText: String = "Creating an Account..."
+) {
+    var clicked by remember {
+        mutableStateOf(false)
+    }
+    Surface(
+        onClick = {
+            clicked = !clicked
+        },
+        shape = Shapes.medium,
+        border = BorderStroke(1.dp, color = Color.LightGray)
+    ) {
+        Row(
+            modifier = Modifier
+                .padding(
+                    start = 12.dp,
+                    end = 16.dp,
+                    top = 12.dp,
+                    bottom = 12.dp
+                )
+                .animateContentSize(
+                    animationSpec = tween(
+                        durationMillis = 300,
+                        easing = LinearOutSlowInEasing
+                    )
+                ),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.ic_google_logo),
+                contentDescription = "My Picture and Logo",
+                tint = Color.Unspecified
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(text = if (clicked) loadingText else text)
+            if (clicked) {
+                Spacer(modifier = Modifier.width(16.dp))
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .height(16.dp)
+                        .width(16.dp),
+                    strokeWidth = 2.dp,
+                    color = MaterialTheme.colors.primary
+                )
+            }
+        }
+
+    }
+}
+
+//Image show and Transactions and Transformations
+@Composable
+fun CoilImage() {
+    Box(
+        modifier = Modifier
+            .height(350.dp)
+            .width(350.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        val painter = rememberAsyncImagePainter(
+            ImageRequest.Builder(LocalContext.current)
+                .data(data = "https://cdn.pixabay.com/photo/2022/07/03/08/56/bird-7298690_1280.jpg")
+                .apply(block = fun ImageRequest.Builder.() {
+                    placeholder(R.drawable.myname)
+                    error(R.drawable.error)
+                    crossfade(1000)
+                    transformations(
+                        // GrayscaleTransformation()
+                        //RoundedCornersTransformation(20f)
+
+                    )
+
+                }).build()
+        )
+        //use Loading when image load Slow
+        val painterState = painter.state
+        Image(painter = painter, contentDescription = "this is bird")
+//        if(painterState is AsyncImagePainter.State.Loading){
+//            CircularProgressIndicator()
+//        }
+
+    }
+}
+
+
+//Learn Gradiant button Jetpack Compose
+//Button
+@Composable
+fun GradiantButtonFirst(
+    text: String,
+    textColor: Color,
+    gradient: Brush,
+    onClick: () -> Unit
+) {
+    Button(
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = Color.Transparent
+        ),
+        contentPadding = PaddingValues(),
+        onClick = {
+            onClick()
+        }) {
+        Box(
+            modifier = Modifier
+                .background(gradient)
+                .padding(horizontal = 70.dp, vertical = 25.dp),
+            contentAlignment = Alignment.Center,
+
+            ) {
+            Text(text = text, color = textColor, fontSize = 20.sp)
+        }
+
+    }
+
+}
+
+
+
 
 
 

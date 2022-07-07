@@ -16,7 +16,7 @@
         android:theme="@style/Theme.JetPackComposePractice"
         tools:targetApi="31">
         <activity
-            android:name=".ui.theme.AnotherActivity"
+            android:name=".LazyColumnActivity"
             android:exported="false"
             android:label="@string/title_activity_another"
             android:theme="@style/Theme.JetPackComposePractice" />
