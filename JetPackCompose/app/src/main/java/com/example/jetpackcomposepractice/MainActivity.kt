@@ -6,6 +6,11 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.Easing
+import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -20,18 +25,26 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.style.BaselineShift
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -43,6 +56,7 @@ import coil.compose.rememberAsyncImagePainter
 import coil.compose.rememberImagePainter
 import com.example.jetpackcomposepractice.ui.theme.AnotherActivity
 import com.example.jetpackcomposepractice.ui.theme.JetPackComposePracticeTheme
+import com.example.jetpackcomposepractice.ui.theme.Shapes
 import com.example.jetpackcomposepractice.ui.theme.SplashFont
 import kotlinx.coroutines.withContext
 
@@ -78,7 +92,12 @@ class MainActivity : ComponentActivity() {
 //                        lastName()
 
                         //LiveData with viewModel
-                        FirstScreen()
+                        //FirstScreen()
+
+                        //BoxSimpleExample()
+                        //  SuperScriptSample("Hello", "world!")
+
+                        ExpendableCardExample()
 
                         //Navigate Another Button
                         Button(onClick = {
@@ -691,55 +710,177 @@ fun MyComposable() {
 fun ScreenContent(
     name: String?,
     onNameChange: (String?) -> Unit,
-    labelname :String?
+    labelname: String?
 ) {
 
     TextField(
         value = name!!,
         onValueChange = onNameChange,
-        label = { Text(labelname!!)}
+        label = { Text(labelname!!) }
     )
 }
 
 @Composable
-fun FirstName(){
+fun FirstName() {
     var name by remember {
         mutableStateOf("")
     }
-    ScreenContent(name = name, onNameChange = {name = it!!},labelname = "First Name")
+    ScreenContent(name = name, onNameChange = { name = it!! }, labelname = "First Name")
 
 }
 
 @Composable
-fun lastName(){
+fun lastName() {
     var lastName by remember {
         mutableStateOf("")
     }
-    ScreenContent(name = lastName, onNameChange ={lastName = it!!} , labelname = "Last Name")
+    ScreenContent(name = lastName, onNameChange = { lastName = it!! }, labelname = "Last Name")
 }
 
 //LiveData With ViewModel
-class MyViewModel : ViewModel(){
+class MyViewModel : ViewModel() {
     private val _name = MutableLiveData("")
     val name: LiveData<String> = _name
-
-    fun onNameChanged(newName:String){
+    fun onNameChanged(newName: String) {
         _name.value = newName
     }
 }
 
 @Composable
-fun FirstScreen(myViewModel: MyViewModel = viewModel()){
+fun FirstScreen(myViewModel: MyViewModel = viewModel()) {
     val name: String by myViewModel.name.observeAsState("")
-    ScreenContent(name = name,
+    ScreenContent(
+        name = name,
         onNameChange = {
-            myViewModel.onNameChanged(it!!) }, labelname = "Good Name")
+            myViewModel.onNameChanged(it!!)
+        }, labelname = "Good Name"
+    )
+}
 
+@Composable
+fun BoxSimpleExample() {
+    Box(
+        modifier = Modifier
+            .background(Color.Blue)
+            .width(100.dp)
+            .height(100.dp)
+    ) {
+
+    }
 
 }
 
+// SuperScript and SubsCript
+@Composable
+fun SuperScriptSample(
+    normalText: String,
+    superText: String
+) {
+    Text(buildAnnotatedString {
+        withStyle(
+            style = SpanStyle(
+                fontSize = MaterialTheme.typography.subtitle1.fontSize
+            )
+        ) {
+            append(normalText)
+        }
+        withStyle(
+            style = SpanStyle(
+                fontSize = MaterialTheme.typography.overline.fontSize,
+                fontWeight = FontWeight.Normal,
+                //baselineShift = BaselineShift.Superscript,
+                baselineShift = BaselineShift.Subscript,
+
+                )
+        ) {
+            append(superText)
+        }
+    })
+}
+
+//Expandable Card View
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+fun ExpendableCardExample() {
+    var expendedState by remember {
+        mutableStateOf(false)
+    }
+    val rotationState by animateFloatAsState(targetValue = if (expendedState) 180f else 0f)
+
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .animateContentSize(
+                animationSpec = tween(
+                    durationMillis = 300,
+                    easing = LinearOutSlowInEasing
+                )
+            ),
+        shape = Shapes.medium,
+        onClick =
+        {
+            expendedState = !expendedState
+        }
+
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp)
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                //First Text
+                Text(
+                    modifier = Modifier
+                        .weight(6f),
+                    text = "My Title",
+                    fontSize = MaterialTheme.typography.h6.fontSize,
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+
+                    )
+                IconButton(
+                    modifier = Modifier
+                        .alpha(ContentAlpha.medium)
+                        .weight(1f)
+                        .rotate(rotationState),
+                    onClick = {
+                        expendedState = !expendedState
+                    }) {
+                    Icon(
+                        imageVector = Icons.Default.ArrowDropDown,
+                        contentDescription = "My Arrow Drop Down"
+                    )
+
+                }
+
+            }
+            //Second Text
+            if (expendedState) {
+                Text(
+                    text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. " +
+                            "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, " +
+                            "when an unknown printer took a galley of type and scrambled it to make a type specimen book." +
+                            " It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. " +
+                            "It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with " +
+                            "desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                    fontSize = MaterialTheme.typography.subtitle1.fontSize,
+                    fontWeight = FontWeight.Normal,
+                    maxLines = 5,
+                    overflow = TextOverflow.Ellipsis,
+
+                    )
+
+            }
 
 
+        }
+
+    }
+}
 
 
 
