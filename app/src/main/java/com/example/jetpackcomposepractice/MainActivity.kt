@@ -49,11 +49,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.jetpackcomposepractice.ui.theme.*
 
 class MainActivity : ComponentActivity() {
+    lateinit var navController : NavHostController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -128,7 +132,7 @@ class MainActivity : ComponentActivity() {
 
                          */
 //                        Button(onClick = {
-//                            val navigate = Intent(this@MainActivity, AnotherActivity::class.java)
+//                            val navigate = Intent(this@MainActivity, LazyColumnActivity::class.java)
 //                            startActivity(navigate)
 //                        }) {
 //                            Text(text = "Navigate Another 2 Activity")
@@ -145,8 +149,12 @@ class MainActivity : ComponentActivity() {
                         }
                          */
 
-                        //Learn Custom Circle indicator
-                        CustomCircleIndicator()
+                    //Learn Custom Circle indicator
+                        //CustomCircleIndicator()
+                        
+                    //Learn Navigation controller 
+                        navController = rememberNavController()
+                        SetupNavGraph(navHostController = navController)
 
                     }
 
