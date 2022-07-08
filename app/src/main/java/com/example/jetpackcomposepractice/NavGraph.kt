@@ -24,13 +24,13 @@ fun SetupNavGraph(
         composable(
             route = Screen.Detail.route,
             arguments = listOf(
-                    navArgument("id"){
+                    navArgument(DETAIL_ARGUMENT_KEY){
                     type = NavType.IntType
                 }
             )
 
         ){
-            Log.d("Check", it.arguments?.getInt("id").toString())
+            Log.d("Check", it.arguments?.getInt(DETAIL_ARGUMENT_KEY).toString())
             DetailScreen(navController = navHostController)
         }
     }
