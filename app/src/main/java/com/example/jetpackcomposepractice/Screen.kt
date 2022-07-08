@@ -4,22 +4,27 @@ const val DETAIL_ARGUMENT_KEY = "id"
 const val DETAIL_ARGUMENT_KEY2 = "name"
 
 
-sealed class Screen(val route:String){
+sealed class Screen(val route: String) {
     object Home : Screen(route = "home_screen")
-    //This is -> Required Argument
-    object Detail :Screen(route = "detail_screen/{$DETAIL_ARGUMENT_KEY}/{$DETAIL_ARGUMENT_KEY2}"){
-        //Single argument
-//        fun passId(id:Int):String{
-//           // return "detail_screen/$id"
-//            return this.route.replace(oldValue = "{$DETAIL_ARGUMENT_KEY}", newValue = id.toString())
+
+    //This is -> Optional Argument
+//    //single value
+//    object Detail : Screen(route = "detail_screen/?id={id}") {
+//        fun passId(id: Int = 0): String {
+//            return "detail_screen/?id=$id"
 //        }
-        //Pass Multiple Argument(Required Argument)
+//
+//    }
+
+    //multiple value
+    object Detail : Screen(route = "detail_screen/?id={$DETAIL_ARGUMENT_KEY}&name={$DETAIL_ARGUMENT_KEY2}") {
         fun passNameAndId(
-            id:Int,
-            name:String
-        ):String{
-          return "detail_screen/$id/$name"
+            id: Int = 0,
+            name:String = "Hridoy"
+        ): String {
+            return "detail_screen/?id=$id&name=$name"
         }
+
     }
 
 

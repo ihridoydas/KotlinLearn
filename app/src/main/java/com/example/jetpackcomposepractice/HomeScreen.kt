@@ -20,15 +20,20 @@ fun HomeScreen(
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
-    ){
+    ) {
         Text(
             modifier = Modifier.clickable {
-                  navController.navigate(route = Screen.Detail.passNameAndId(2,"Hridoy"))
+                navController.navigate(
+                    route = Screen.Detail.passNameAndId(
+                        //if you can pass data (its optional) if u dont pass value its count default value
+                        id = 10, name = "Chandra"
+                    )
+                )
             },
-        text = "Home",
-        color = MaterialTheme.colors.primary,
-        fontSize = MaterialTheme.typography.h3.fontSize,
-        fontWeight = FontWeight.Bold
+            text = "Home",
+            color = MaterialTheme.colors.primary,
+            fontSize = MaterialTheme.typography.h3.fontSize,
+            fontWeight = FontWeight.Bold
         )
     }
 }
@@ -36,6 +41,6 @@ fun HomeScreen(
 @Composable
 @Preview(showBackground = true)
 
-fun ShowHomeScreen(){
+fun ShowHomeScreen() {
     HomeScreen(navController = rememberNavController())
 }

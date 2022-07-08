@@ -26,6 +26,7 @@ fun SetupNavGraph(
             arguments = listOf(
                 navArgument(DETAIL_ARGUMENT_KEY) {
                     type = NavType.IntType
+                    defaultValue = 0
                 },
                 navArgument(DETAIL_ARGUMENT_KEY2) {
                     type = NavType.StringType
