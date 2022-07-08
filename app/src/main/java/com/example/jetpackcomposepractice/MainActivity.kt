@@ -155,6 +155,13 @@ class MainActivity : ComponentActivity() {
                     //Learn Navigation controller 
                         navController = rememberNavController()
                         SetupNavGraph(navHostController = navController)
+            //Learn Pass Argument with Navigation
+                // Arguament has two type
+                //1. Optional Argument ->  (not need pass argument to another screen)
+                    // 2. Required argument (you might need everytime need -> value to pass when you pass data)
+
+
+
 
                     }
 
