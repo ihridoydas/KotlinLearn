@@ -1,7 +1,7 @@
-package com.example.jetpackcomposepractice.TODO
+package com.example.jetpackcomposepractice.todo.ui.Repository
 
-import com.example.jetpackcomposepractice.TODO.data.Todo
-import com.example.jetpackcomposepractice.TODO.data.TodoDao
+import com.example.jetpackcomposepractice.todo.data.model.Todo
+import com.example.jetpackcomposepractice.todo.data.dao.TodoDao
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext

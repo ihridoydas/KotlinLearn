@@ -1,5 +1,6 @@
 package com.example.jetpackcomposepractice
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -49,11 +50,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.jetpackcomposepractice.CustomUI.CustomComponent
-import com.example.jetpackcomposepractice.Screen.SetupNavGraph
+import com.example.jetpackcomposepractice.todo.ui.TodoActivity
 import com.example.jetpackcomposepractice.ui.theme.*
 
 class MainActivity : ComponentActivity() {
@@ -132,12 +132,14 @@ class MainActivity : ComponentActivity() {
                         }
 
                          */
-//                        Button(onClick = {
-//                            val navigate = Intent(this@MainActivity, LazyColumnActivity::class.java)
-//                            startActivity(navigate)
-//                        }) {
-//                            Text(text = "Navigate Another 2 Activity")
-//                        }
+
+                        Button(onClick = {
+                            val navigate = Intent(this@MainActivity, TodoActivity::class.java)
+                            startActivity(navigate)
+                        }) {
+                            Text(text = "Navigate Another 2 Activity")
+                        }
+
 
                         /*
                        Column {
@@ -153,9 +155,13 @@ class MainActivity : ComponentActivity() {
                     //Learn Custom Circle indicator
                         //CustomCircleIndicator()
                         
-                    //Learn Navigation controller 
+                    //Learn Navigation controller
+                        /*
                         navController = rememberNavController()
                         SetupNavGraph(navHostController = navController)
+
+                         */
+
             //Learn Pass Argument with Navigation
                 // Arguament has two type
                 //1. Optional Argument ->  (not need pass argument to another screen)

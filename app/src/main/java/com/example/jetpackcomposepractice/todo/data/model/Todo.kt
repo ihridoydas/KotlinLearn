@@ -1,13 +1,13 @@
-package com.example.jetpackcomposepractice.TODO.data
+package com.example.jetpackcomposepractice.todo.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "todoTable")
 data class Todo(
-    val title: String,
-    val description: String
+    val title:String,
+    val description:String
 ){
     @PrimaryKey(autoGenerate = true)
-    val id:Int? = null
+    var id:Int? = null
 }

@@ -2,8 +2,8 @@ package com.example.jetpackcomposepractice.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.jetpackcomposepractice.TODO.data.TodoDao
-import com.example.jetpackcomposepractice.TODO.data.TodoDatabase
+import com.example.jetpackcomposepractice.todo.data.dao.TodoDao
+import com.example.jetpackcomposepractice.todo.data.database.TodoDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,12 +16,12 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun providesDatabase(application: Application):TodoDatabase =
-        Room.databaseBuilder(application,TodoDatabase::class.java,"TodoDatabase")
+    fun providesDatabase(application: Application): TodoDatabase =
+        Room.databaseBuilder(application, TodoDatabase::class.java,"TodoDatabase")
             .fallbackToDestructiveMigration()
             .build()
 
     @Provides
     @Singleton
-    fun providesDao(db:TodoDatabase):TodoDao = db.getDao()
+    fun providesDao(db: TodoDatabase): TodoDao = db.getDao()
 }
