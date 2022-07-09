@@ -1,4 +1,4 @@
-package com.example.jetpackcomposepractice
+package com.example.jetpackcomposepractice.CustomUI
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

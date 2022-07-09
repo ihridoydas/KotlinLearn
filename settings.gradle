@@ -6,7 +6,7 @@ pluginManagement {
     }
     resolutionStrategy {
         eachPlugin {
-            def hilt_version = "2.38.1"
+            def hilt_version = "2.41"
             if( requested.id.id == 'dagger.hilt.android.plugin') {
                 useModule("com.google.dagger:hilt-android-gradle-plugin:$hilt_version")
             }

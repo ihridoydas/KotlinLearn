@@ -52,6 +52,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
+import com.example.jetpackcomposepractice.CustomUI.CustomComponent
 import com.example.jetpackcomposepractice.Screen.SetupNavGraph
 import com.example.jetpackcomposepractice.ui.theme.*
 
