@@ -1,6 +1,5 @@
 package com.example.jetpackcomposepractice
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -53,6 +52,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
+import com.example.jetpackcomposepractice.Screen.SetupNavGraph
 import com.example.jetpackcomposepractice.ui.theme.*
 
 class MainActivity : ComponentActivity() {

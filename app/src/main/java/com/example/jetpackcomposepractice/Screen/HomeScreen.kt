@@ -1,4 +1,4 @@
-package com.example.jetpackcomposepractice
+package com.example.jetpackcomposepractice.Screen
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -14,26 +14,24 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun DetailScreen(
+fun HomeScreen(
     navController: NavController
 ) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
-    ){
+    ) {
         Text(
             modifier = Modifier.clickable {
-              // navController.navigate(route = Screen.Home.route)
-              // navController.popBackStack()
-                //Best Way to Navigate this
-                navController.navigate(route = Screen.Home.route){
-                    popUpTo(Screen.Home.route){
-                        inclusive = true
-                    }
-                }
+                navController.navigate(
+                    route = Screen.Detail.passNameAndId(
+                        //if you can pass data (its optional) if u dont pass value its count default value
+                        id = 10, name = "Chandra"
+                    )
+                )
             },
-            text = "Details",
-            color = MaterialTheme.colors.secondary,
+            text = "Home",
+            color = MaterialTheme.colors.primary,
             fontSize = MaterialTheme.typography.h3.fontSize,
             fontWeight = FontWeight.Bold
         )
@@ -43,6 +41,6 @@ fun DetailScreen(
 @Composable
 @Preview(showBackground = true)
 
-fun ShowDetailScreen(){
-    DetailScreen(navController = rememberNavController())
+fun ShowHomeScreen() {
+    HomeScreen(navController = rememberNavController())
 }
