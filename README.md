@@ -1,4 +1,4 @@
-# Somer Config for new Project(2022/7/09)
+# Some Config for new Project(2022/7/09)
 # Lets setup XML(without Compose) Dependency
 
 ## Plugins
