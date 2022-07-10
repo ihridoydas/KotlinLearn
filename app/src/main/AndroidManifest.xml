@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetPackComposePractice"
         tools:targetApi="31">
+
         <activity
             android:name=".RetrofitAPI.RetrofitActivity"
             android:exported="false"
@@ -33,14 +34,21 @@
             android:theme="@style/Theme.JetPackComposePractice" />
         <activity
             android:name=".MainActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.JetPackComposePractice">
+        </activity>
+
+        <activity
+            android:name=".ViewPager.OnBoardingActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.JetPackComposePractice">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 
