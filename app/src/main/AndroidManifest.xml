@@ -17,6 +17,11 @@
         android:theme="@style/Theme.JetPackComposePractice"
         tools:targetApi="31">
         <activity
+            android:name=".RetrofitAPI.RetrofitActivity"
+            android:exported="false"
+            android:label="Practice API Retrofit"
+            android:theme="@style/Theme.JetPackComposePractice" />
+        <activity
             android:name=".LazyColumnActivity"
             android:exported="false"
             android:label="@string/title_activity_another"
