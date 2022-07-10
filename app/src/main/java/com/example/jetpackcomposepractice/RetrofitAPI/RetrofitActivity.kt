@@ -48,8 +48,11 @@ class RetrofitActivity : ComponentActivity() {
             elevation = 2.dp,
             shape = RoundedCornerShape(4.dp)
         ) {
-            Text(text = post.body, modifier = Modifier.padding(10.dp), fontStyle = FontStyle.Italic)
+            Column {
+                Text(text = "Title: ${post.title}",modifier = Modifier.padding(8.dp), fontStyle = FontStyle.Normal)
+                Text(text = post.body, modifier = Modifier.padding(10.dp), fontStyle = FontStyle.Italic)
 
+            }
         }
     }
 
