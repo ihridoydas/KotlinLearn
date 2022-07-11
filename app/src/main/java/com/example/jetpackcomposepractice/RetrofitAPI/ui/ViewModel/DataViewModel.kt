@@ -1,4 +1,4 @@
-package com.example.jetpackcomposepractice.RetrofitAPI.ui
+package com.example.jetpackcomposepractice.RetrofitAPI.ui.ViewModel
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf

@@ -15,14 +15,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import com.example.jetpackcomposepractice.RetrofitAPI.model.Post
-import com.example.jetpackcomposepractice.RetrofitAPI.ui.DataViewModel
+import com.example.jetpackcomposepractice.RetrofitAPI.ui.ViewModel.DataViewModel
 import com.example.jetpackcomposepractice.RetrofitAPI.ui.theme.JetPackComposePracticeTheme
 import com.example.jetpackcomposepractice.RetrofitAPI.utils.ApiState
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RetrofitActivity : ComponentActivity() {
-    private val dataViewModel:DataViewModel by viewModels()
+    private val dataViewModel: DataViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

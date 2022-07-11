@@ -33,7 +33,6 @@ constructor(private val todoRepository: TodoRepository) : ViewModel() {
             .catch { e ->
                 Log.d("main", "Exception: ${e.message}")
             }.collect {
-
                 response.value = it
             }
     }

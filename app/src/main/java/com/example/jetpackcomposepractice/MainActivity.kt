@@ -54,6 +54,7 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.jetpackcomposepractice.CustomUI.CustomComponent
 import com.example.jetpackcomposepractice.RetrofitAPI.RetrofitActivity
+import com.example.jetpackcomposepractice.feature_note.presentation.notes.NotesScreen
 import com.example.jetpackcomposepractice.todo.ui.TodoActivity
 import com.example.jetpackcomposepractice.ui.theme.*
 
@@ -147,7 +148,7 @@ class MainActivity : ComponentActivity() {
                         }) {
                             Text(text = "Navigate Retrofit Activity")
                         }
-
+//
 
                         /*
                        Column {
@@ -175,6 +176,8 @@ class MainActivity : ComponentActivity() {
                 //1. Optional Argument ->  (not need pass argument to another screen)
                     // 2. Required argument (you might need everytime need -> value to pass when you pass data)
 
+
+                        //Note Screeen
 
 
 
