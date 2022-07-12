@@ -17,13 +17,11 @@ import javax.inject.Inject
 class TodoViewModel
 @Inject
 constructor(private val todoRepository: TodoRepository) : ViewModel() {
-
     val response: MutableState<List<Todo>> = mutableStateOf(listOf())
 
     fun insert(todo: Todo) = viewModelScope.launch {
         todoRepository.insert(todo)
     }
-
     init {
         getAllTodos()
     }

@@ -59,7 +59,6 @@ object DatabaseModule {
 
 
     //Feature Note Database Room
-
     @Provides
     @Singleton
     fun providesNoteDatabase(application: Application): NoteDatabase =
