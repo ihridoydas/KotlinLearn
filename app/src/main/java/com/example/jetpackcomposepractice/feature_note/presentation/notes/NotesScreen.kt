@@ -25,6 +25,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun NotesScreen(
     navController: NavController,
+    //viewModel: NotesViewModel = viewModel(),
     viewModel: NotesViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value

@@ -1,6 +1,6 @@
-package com.example.jetpackcomposepractice.repository
+package com.example.jetpackcomposepractice.RecyclerViewInCompose.repository
 
-import com.example.jetpackcomposepractice.model.Person
+import com.example.jetpackcomposepractice.RecyclerViewInCompose.model.Person
 
 class PersonRepository {
 

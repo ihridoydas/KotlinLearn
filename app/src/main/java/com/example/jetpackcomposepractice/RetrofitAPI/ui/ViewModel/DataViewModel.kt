@@ -15,7 +15,9 @@ import javax.inject.Inject
 @HiltViewModel
 class DataViewModel
 @Inject
-constructor(private val dataRepository: DataRepository) : ViewModel() {
+constructor(
+    private val dataRepository: DataRepository
+    ) : ViewModel() {
 
     val response : MutableState<ApiState> = mutableStateOf(ApiState.Empty)
 
