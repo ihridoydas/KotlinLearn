@@ -2,7 +2,7 @@ package com.example.jetpackcomposepractice.feature_note.domain.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.jetpackcomposepractice.ui.theme.*
+import com.example.jetpackcomposepractice.feature_note.ui.theme.*
 
 @Entity
 data class Note(

@@ -9,11 +9,12 @@ import androidx.lifecycle.viewModelScope
 import com.example.jetpackcomposepractice.feature_note.domain.model.InvalidNoteException
 import com.example.jetpackcomposepractice.feature_note.domain.model.Note
 import com.example.jetpackcomposepractice.feature_note.domain.use_case.NoteUseCases
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
+@HiltViewModel
 class AddEditNoteViewModel @Inject constructor(
     private val noteUseCases: NoteUseCases,
     savedSateHandle: SavedStateHandle
@@ -52,12 +53,12 @@ class AddEditNoteViewModel @Inject constructor(
                         currentNoteId = note.id
                         _noteTitle.value = noteTitle.value.copy(
                            text = note.title,
-                            isHintVisible = false
+                            isHintVisible = true
                         )
 
                         _noteContent.value = noteContent.value.copy(
                             text = note.content,
-                            isHintVisible = false
+                            isHintVisible = true
                         )
                         _noteColor.value = note.color
 
@@ -113,7 +114,7 @@ class AddEditNoteViewModel @Inject constructor(
                     } catch (e: InvalidNoteException) {
                         _eventFlow.emit(
                             UiEvent.showSnackbar(
-                                message = e.message ?: "Couldn`t save note!!"
+                                message = e.message ?: "Could`t save note!!"
                             )
                         )
 

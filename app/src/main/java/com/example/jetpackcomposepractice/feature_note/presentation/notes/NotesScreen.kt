@@ -15,17 +15,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.jetpackcomposepractice.feature_note.presentation.notes.components.NoteItem
 import com.example.jetpackcomposepractice.feature_note.presentation.notes.components.OrderSection
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.example.jetpackcomposepractice.feature_note.presentation.util.Screen
 import kotlinx.coroutines.launch
 
 @Composable
 fun NotesScreen(
-    navController: NavController,
     //viewModel: NotesViewModel = viewModel(),
+    navController: NavController,
     viewModel: NotesViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
@@ -37,7 +36,7 @@ fun NotesScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-
+                    navController.navigate(Screen.AddEditNoteScreen.route)
                 },
                 backgroundColor = MaterialTheme.colors.primary
             ) {
@@ -64,12 +63,13 @@ fun NotesScreen(
                 IconButton(onClick = {
                     viewModel.onEvent(NotesEvent.ToggleOrderSection)
                 }) {
-               
+
                     Icon(imageVector = Icons.Default.Sort, contentDescription = "Sort")
                 }
 
             }
-            AnimatedVisibility(visible = state.isOrderSectionVisible,
+            AnimatedVisibility(
+                visible = state.isOrderSectionVisible,
                 enter = fadeIn() + slideInVertically(),
                 exit = fadeOut() + slideOutVertically()
             ) {
@@ -84,23 +84,26 @@ fun NotesScreen(
                 )
             }
             Spacer(modifier = Modifier.height(16.dp))
-            LazyColumn(modifier = Modifier.fillMaxWidth()){
-                items(state.notes){note->
+            LazyColumn(modifier = Modifier.fillMaxWidth()) {
+                items(state.notes) { note ->
                     NoteItem(
                         note = note,
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-
+                                navController.navigate(
+                                    Screen.AddEditNoteScreen.route +
+                                            "?noteId=${note.id}&noteColor=${note.color}"
+                                )
                             },
                         onDeleteClick = {
                             viewModel.onEvent(NotesEvent.DeleteNote(note))
                             scope.launch {
-                               val result = scaffoldState.snackbarHostState.showSnackbar(
-                                    message =  "Note deleted",
+                                val result = scaffoldState.snackbarHostState.showSnackbar(
+                                    message = "Note deleted",
                                     actionLabel = "Undo"
                                 )
-                                if(result == SnackbarResult.ActionPerformed){
+                                if (result == SnackbarResult.ActionPerformed) {
                                     viewModel.onEvent(NotesEvent.RestoreNote)
                                 }
                             }

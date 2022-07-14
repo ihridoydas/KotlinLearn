@@ -53,6 +53,7 @@ import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.jetpackcomposepractice.customUI.CustomComponent
+import com.example.jetpackcomposepractice.feature_note.NoteActivity
 import com.example.jetpackcomposepractice.retrofitAPI.RetrofitActivity
 import com.example.jetpackcomposepractice.todo.ui.TodoActivity
 import com.example.jetpackcomposepractice.ui.theme.*
@@ -147,6 +148,14 @@ class MainActivity : ComponentActivity() {
                         }) {
                             Text(text = "Navigate Retrofit Activity")
                         }
+
+                        Button(onClick = {
+                            val navigate = Intent(this@MainActivity, NoteActivity::class.java)
+                            startActivity(navigate)
+                        }) {
+                            Text(text = "Notes Activity")
+                        }
+//
 //
 
                         /*
