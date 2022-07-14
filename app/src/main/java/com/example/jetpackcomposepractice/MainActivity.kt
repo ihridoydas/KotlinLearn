@@ -52,9 +52,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
-import com.example.jetpackcomposepractice.CustomUI.CustomComponent
-import com.example.jetpackcomposepractice.RetrofitAPI.RetrofitActivity
-import com.example.jetpackcomposepractice.feature_note.presentation.notes.NotesScreen
+import com.example.jetpackcomposepractice.customUI.CustomComponent
+import com.example.jetpackcomposepractice.retrofitAPI.RetrofitActivity
 import com.example.jetpackcomposepractice.todo.ui.TodoActivity
 import com.example.jetpackcomposepractice.ui.theme.*
 

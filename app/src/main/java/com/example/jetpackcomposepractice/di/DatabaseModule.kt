@@ -2,14 +2,12 @@ package com.example.jetpackcomposepractice.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.jetpackcomposepractice.RetrofitAPI.Network.Apiservice
+import com.example.jetpackcomposepractice.retrofitAPI.network.Apiservice
+import com.example.jetpackcomposepractice.retrofitAPI.repository.DataRepository
 import com.example.jetpackcomposepractice.feature_note.data.data_source.NoteDatabase
 import com.example.jetpackcomposepractice.feature_note.data.repository.NoteRepositoryImpl
 import com.example.jetpackcomposepractice.feature_note.domain.repository.NoteRepository
-import com.example.jetpackcomposepractice.feature_note.domain.use_case.AddNote
-import com.example.jetpackcomposepractice.feature_note.domain.use_case.DeleteNote
-import com.example.jetpackcomposepractice.feature_note.domain.use_case.GetNotes
-import com.example.jetpackcomposepractice.feature_note.domain.use_case.NoteUseCases
+import com.example.jetpackcomposepractice.feature_note.domain.use_case.*
 import com.example.jetpackcomposepractice.todo.data.dao.TodoDao
 import com.example.jetpackcomposepractice.todo.data.database.TodoDatabase
 import com.squareup.moshi.Moshi
@@ -20,7 +18,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -73,12 +70,18 @@ object DatabaseModule {
     }
 
     @Provides
+    fun providesDataRepository(apiservice: Apiservice): DataRepository {
+        return DataRepository(apiservice)
+    }
+
+    @Provides
     @Singleton
     fun providesNotesUseCases(noteRepository: NoteRepository): NoteUseCases{
         return NoteUseCases(
             getNotes = GetNotes(noteRepository),
             deleteNote = DeleteNote(noteRepository),
-            addNote = AddNote(noteRepository)
+            addNote = AddNote(noteRepository),
+            getNote = GetNote(noteRepository)
         )
     }
 

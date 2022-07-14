@@ -25,7 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.lifecycleScope
 import com.example.jetpackcomposepractice.todo.data.model.Todo
-import com.example.jetpackcomposepractice.todo.ui.Viewmodel.TodoViewModel
+import com.example.jetpackcomposepractice.todo.ui.viewmodel.TodoViewModel
 import com.example.jetpackcomposepractice.ui.theme.JetPackComposePracticeTheme
 import dagger.hilt.android.AndroidEntryPoint
 
