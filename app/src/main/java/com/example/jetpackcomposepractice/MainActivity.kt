@@ -59,6 +59,7 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.jetpackcomposepractice.customUI.CustomComponent
 import com.example.jetpackcomposepractice.feature_note.NoteActivity
+import com.example.jetpackcomposepractice.navigationPassingDataNavHost.PassingDataNavHost
 import com.example.jetpackcomposepractice.nestedNavigation.NestedNavigation
 import com.example.jetpackcomposepractice.nestedNavigation.graphs.RootNavigationGraph
 import com.example.jetpackcomposepractice.retrofitAPI.RetrofitActivity
@@ -215,6 +216,13 @@ class MainActivity : ComponentActivity() {
                             startActivity(navigate)
                         }) {
                             Text(text = "NavGraph argument")
+                        }
+                        Button(onClick = {
+                            val navigate =
+                                Intent(this@MainActivity, PassingDataNavHost::class.java)
+                            startActivity(navigate)
+                        }) {
+                            Text(text = "Passing Data Via NavHost")
                         }
 
 
