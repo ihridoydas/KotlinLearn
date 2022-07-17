@@ -17,6 +17,16 @@
         android:theme="@style/Theme.JetPackComposePractice"
         tools:targetApi="31">
         <activity
+            android:name=".screen.NavGraphActivity"
+            android:exported="false"
+            android:label="@string/title_activity_nav_graph"
+            android:theme="@style/Theme.JetPackComposePractice" />
+        <activity
+            android:name=".nestedNavigation.NestedNavigation"
+            android:exported="false"
+            android:label="@string/title_activity_nested_navigation"
+            android:theme="@style/Theme.JetPackComposePractice" />
+        <activity
             android:name=".feature_note.NoteActivity"
             android:exported="false"
             android:label="Note Activity"
@@ -40,7 +50,7 @@
             android:name=".MainActivity"
             android:exported="false"
             android:label="@string/app_name"
-            android:theme="@style/Theme.JetPackComposePractice"></activity>
+            android:theme="@style/Theme.JetPackComposePractice" />
         <activity
             android:name=".viewPager.OnBoardingActivity"
             android:exported="true"

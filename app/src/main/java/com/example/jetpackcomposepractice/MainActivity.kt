@@ -1,5 +1,6 @@
 package com.example.jetpackcomposepractice
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -22,6 +23,9 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.Bottom
+import androidx.compose.ui.Alignment.Companion.BottomCenter
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
@@ -50,22 +54,30 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.jetpackcomposepractice.customUI.CustomComponent
 import com.example.jetpackcomposepractice.feature_note.NoteActivity
+import com.example.jetpackcomposepractice.nestedNavigation.NestedNavigation
+import com.example.jetpackcomposepractice.nestedNavigation.graphs.RootNavigationGraph
 import com.example.jetpackcomposepractice.retrofitAPI.RetrofitActivity
+import com.example.jetpackcomposepractice.screen.NavGraphActivity
+import com.example.jetpackcomposepractice.screen.SetupNavGraph
 import com.example.jetpackcomposepractice.todo.ui.TodoActivity
 import com.example.jetpackcomposepractice.ui.theme.*
+import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
-    lateinit var navController : NavHostController
+    lateinit var navController: NavHostController
 
+    @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             JetPackComposePracticeTheme {
-                // A surface container using the 'background' color from the theme
+
+                //A surface container using the 'background' color from the theme
                 Surface(
                     //modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
@@ -73,7 +85,7 @@ class MainActivity : ComponentActivity() {
                     Column(
                         modifier = Modifier.fillMaxSize(),
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
+                        verticalArrangement = Arrangement.Top
                     ) {
                         // ColumnExample()
                         //LazyRowExample()
@@ -133,7 +145,41 @@ class MainActivity : ComponentActivity() {
                             Text(text = "Navigate Lazy Column Activity")
                         }
 
+
+                       Column {
+                           Greeting("Android")
+                           FirstText()
+                           ListOfName()
+                           SimpleText()
+                           LongText()
+                           RowText()
+                        }
                          */
+
+                        //Learn Custom Circle indicator
+                        //CustomCircleIndicator()
+
+
+
+                        //Learn Pass Argument with Navigation
+                        // Argument has two type
+                        //1. Optional Argument ->  (not need pass argument to another screen)
+                        // 2. Required argument (you might need everytime need -> value to pass when you pass data)
+
+
+                        //Note Screen
+
+                        //State Practice
+
+//                        ColorBox(
+//                            Modifier.fillMaxSize ()
+//                        )
+
+
+                        //ScreenSwitch()
+                        //UseSwitch()
+
+              //TODO--Button of main Activity
 
                         Button(onClick = {
                             val navigate = Intent(this@MainActivity, TodoActivity::class.java)
@@ -155,37 +201,24 @@ class MainActivity : ComponentActivity() {
                         }) {
                             Text(text = "Notes Activity")
                         }
-//
-//
-
-                        /*
-                       Column {
-                           Greeting("Android")
-                           FirstText()
-                           ListOfName()
-                           SimpleText()
-                           LongText()
-                           RowText()
+                        Button(onClick = {
+                            val navigate =
+                                Intent(this@MainActivity, NestedNavigation::class.java)
+                            startActivity(navigate)
+                        }) {
+                            Text(text = "Nested Navigation")
                         }
-                         */
 
-                    //Learn Custom Circle indicator
-                        //CustomCircleIndicator()
-                        
-                    //Learn Navigation controller
-                        /*
-                        navController = rememberNavController()
-                        SetupNavGraph(navHostController = navController)
-
-                         */
-
-            //Learn Pass Argument with Navigation
-                // Arguament has two type
-                //1. Optional Argument ->  (not need pass argument to another screen)
-                    // 2. Required argument (you might need everytime need -> value to pass when you pass data)
+                        Button(onClick = {
+                            val navigate =
+                                Intent(this@MainActivity, NavGraphActivity::class.java)
+                            startActivity(navigate)
+                        }) {
+                            Text(text = "NavGraph argument")
+                        }
 
 
-                        //Note Screeen
+
 
 
 
@@ -1074,7 +1107,7 @@ fun GradiantButtonFirst(
 
 
 @Composable
-fun CustomCircleIndicator(){
+fun CustomCircleIndicator() {
     val maxChar = 3
     var value by remember {
         mutableStateOf(0)
@@ -1087,9 +1120,9 @@ fun CustomCircleIndicator(){
     TextField(
         value = value.toString(),
         onValueChange = {
-            value = if(it.isNotEmpty() && it.length <= maxChar){
+            value = if (it.isNotEmpty() && it.length <= maxChar) {
                 it.toInt()
-            }else{
+            } else {
                 0
             }
         },
@@ -1099,6 +1132,115 @@ fun CustomCircleIndicator(){
     )
 
 }
+
+//Color Change With UI State
+@SuppressLint("UnrememberedMutableState")
+@Composable
+fun ColorBox(modifier: Modifier = Modifier) {
+    val color = remember {
+        mutableStateOf(Color.Yellow)
+    }
+
+    Box(
+        modifier = modifier
+            .background(color.value)
+            .clickable {
+                color.value = Color(
+                    Random.nextFloat(),
+                    Random.nextFloat(),
+                    Random.nextFloat(),
+                    alpha = 1f
+
+                )
+            }
+    )
+}
+
+@Composable
+fun ScreenSwitch() {
+    var checked by remember {
+        mutableStateOf(false)
+    }
+    MySwitch(checked = checked, onChange = {
+        checked = it
+    })
+    if (checked) {
+        Text(text = "its checked")
+    } else {
+        Text(text = "not Checked")
+    }
+
+}
+
+@Composable
+fun MySwitch(
+    checked: Boolean,
+    onChange: (Boolean) -> Unit
+) {
+    Switch(
+        checked = checked,
+        onCheckedChange = {
+            onChange(it)
+        })
+
+}
+
+@Composable
+fun SwitchButton(
+    checked: Boolean,
+    onChanged: (Boolean) -> Unit
+
+) {
+    Switch(checked = checked, onCheckedChange = {
+        onChanged(it)
+    })
+}
+
+@Composable
+fun UseSwitch() {
+    val checked = remember {
+        mutableStateOf(true)
+    }
+    SwitchButton(checked = checked.value, onChanged = {
+        checked.value = it
+    })
+    if (checked.value) {
+        Column {
+            Box(
+                modifier = Modifier
+                    .background(Color.LightGray)
+                    .padding(20.dp)
+                    .fillMaxSize()
+            ) {
+                Column {
+                    Button(onClick = { /*TODO*/ })
+                    {
+                        Text(text = "Button1")
+
+                    }
+                    Button(onClick = { /*TODO*/ })
+                    {
+                        Text(text = "Button2")
+
+                    }
+                    Button(onClick = { /*TODO*/ })
+                    {
+                        Text(text = "Button3")
+
+                    }
+                }
+            }
+
+        }
+
+    } else {
+
+        //Text(text = "test")
+    }
+
+}
+
+
 
 
 

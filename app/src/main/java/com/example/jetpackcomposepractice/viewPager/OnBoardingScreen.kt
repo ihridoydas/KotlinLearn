@@ -1,8 +1,10 @@
 package com.example.jetpackcomposepractice.viewPager
 
+import android.app.Activity
 import android.content.Intent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -15,6 +17,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.jetpackcomposepractice.MainActivity
 import com.example.jetpackcomposepractice.R
+import com.example.jetpackcomposepractice.nestedNavigation.PracticeScreen
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
@@ -54,7 +57,6 @@ fun OnBoardingScreen() {
             }, modifier = Modifier.fillMaxWidth()) {
                 Text(text = "Get Started..")
             }
-
         }
     }
 }

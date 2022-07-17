@@ -17,6 +17,8 @@ fun SetupNavGraph(
             route = Screen.Home.route
         ) {
             HomeScreen(navController = navHostController)
+
+
         }
 
         composable(
@@ -37,5 +39,7 @@ fun SetupNavGraph(
             DetailScreen(navController = navHostController)
         }
     }
+
+
 
 }
