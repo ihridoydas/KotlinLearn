@@ -57,6 +57,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
+import com.example.jetpackcomposepractice.albumFeature.AlbumDetailsActivity
 import com.example.jetpackcomposepractice.customUI.CustomComponent
 import com.example.jetpackcomposepractice.feature_note.NoteActivity
 import com.example.jetpackcomposepractice.navigationPassingDataNavHost.PassingDataNavHost
@@ -224,6 +225,15 @@ class MainActivity : ComponentActivity() {
                         }) {
                             Text(text = "Passing Data Via NavHost")
                         }
+
+                        Button(onClick = {
+                            val navigate =
+                                Intent(this@MainActivity, AlbumDetailsActivity::class.java)
+                            startActivity(navigate)
+                        }) {
+                            Text(text = "Album Details")
+                        }
+
 
 
 

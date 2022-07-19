@@ -3,9 +3,14 @@ buildscript {
         compose_version = '1.1.1'
         hilt_version = '2.41'
         room_version = "2.4.2"
+        retrofitVersion = '2.9.0'
         kotlin_version = "1.6.10"
         accompanist_version = '0.20.2'
         lifecycle_version = "2.5.0-rc01"
+        material3_version = '1.0.0-alpha09'
+        ktx_coroutine_version = '1.6.1'
+        camerax_version = '1.0.1'
+
     }
     //You can use this way to add Class Path [Another way-> [settings.gradle-> resolutionStrategy]]
 //    dependencies {
