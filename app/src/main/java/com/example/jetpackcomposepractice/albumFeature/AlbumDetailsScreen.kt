@@ -270,8 +270,7 @@ fun AlbumDetailScreen(
         // 取り込み完了ダイアログ
         ImportCompleteDialog(viewModel = viewModel)
 
-
-        //
+        //Start Implementation
 
         LazyColumn(
             modifier = Modifier

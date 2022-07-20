@@ -10,12 +10,16 @@
         <entry key="../../../../../../layout/compose-model-1657775238479.xml" value="0.28927364864864863" />
         <entry key="../../../../../../layout/compose-model-1658033279720.xml" value="0.13148148148148148" />
         <entry key="../../../../../../layout/compose-model-1658215433965.xml" value="0.337037037037037" />
+        <entry key="../../../../../../layout/compose-model-1658288075118.xml" value="0.31851851851851853" />
         <entry key="../../../../../layout/compose-model-1656912874283.xml" value="1.0" />
         <entry key="../../../../../layout/compose-model-1657158751967.xml" value="0.5" />
         <entry key="app/src/main/res/drawable-v24/ic_google_logo.xml" value="0.391" />
         <entry key="app/src/main/res/drawable/badge2.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/ic_camera_and_galery_inactive.xml" value="0.182" />
         <entry key="app/src/main/res/drawable/ic_checked.xml" value="0.182" />
+        <entry key="app/src/main/res/drawable/ic_login_icon_lock.xml" value="0.172" />
+        <entry key="app/src/main/res/drawable/ic_logo.xml" value="0.172" />
+        <entry key="app/src/main/res/drawable/ic_visibility_off.xml" value="0.172" />
       </map>
     </option>
   </component>

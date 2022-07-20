@@ -68,6 +68,7 @@ import com.example.jetpackcomposepractice.screen.NavGraphActivity
 import com.example.jetpackcomposepractice.screen.SetupNavGraph
 import com.example.jetpackcomposepractice.todo.ui.TodoActivity
 import com.example.jetpackcomposepractice.ui.theme.*
+import com.example.jetpackcomposepractice.uiPractice.loginScreen.LoginActivity
 import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
@@ -233,6 +234,15 @@ class MainActivity : ComponentActivity() {
                         }) {
                             Text(text = "Album Details")
                         }
+
+                        Button(onClick = {
+                            val navigate =
+                                Intent(this@MainActivity, LoginActivity::class.java)
+                            startActivity(navigate)
+                        }) {
+                            Text(text = "Login UI")
+                        }
+
 
 
 
