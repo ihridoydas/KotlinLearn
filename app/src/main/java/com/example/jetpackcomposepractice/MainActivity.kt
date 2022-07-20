@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.animateContentSize
@@ -185,128 +186,70 @@ class MainActivity : ComponentActivity() {
 
                         //TODO--Button of main Activity
 
-                        Button(
-                            onClick = {
-                                val navigate = Intent(this@MainActivity, TodoActivity::class.java)
-                                startActivity(navigate)
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .align(alignment = Alignment.CenterHorizontally)
-                                .padding(start = 5.dp, end = 5.dp)
-
+                        @Composable
+                        fun DisplayButton(
+                            onClick: () -> Unit,
+                            modifier: Modifier = Modifier,
+                            text: String,
                         ) {
-                            Text(text = "Navigate Todo(Room)Activity")
-                        }
+                            Button(
+                                onClick = onClick,
+                                modifier
+                                    .fillMaxWidth()
+                                    .align(alignment = Alignment.CenterHorizontally)
+                                    .padding(start = 5.dp, end = 5.dp)
+                            ) {
+                                Text(text = text)
 
-                        Button(
-                            onClick = {
-                                val navigate =
-                                    Intent(this@MainActivity, RetrofitActivity::class.java)
-                                startActivity(navigate)
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .align(alignment = Alignment.CenterHorizontally)
-                                .padding(start = 5.dp, end = 5.dp)
-                        ) {
-                            Text(text = "Navigate Retrofit Activity")
+                            }
+
                         }
 
-                        Button(
-                            onClick = {
-                                val navigate = Intent(this@MainActivity, NoteActivity::class.java)
-                                startActivity(navigate)
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .align(alignment = Alignment.CenterHorizontally)
-                                .padding(start = 5.dp, end = 5.dp)
-                        ) {
-                            Text(text = "Notes Activity")
-                        }
-                        Button(
-                            onClick = {
-                                val navigate =
-                                    Intent(this@MainActivity, NestedNavigation::class.java)
-                                startActivity(navigate)
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .align(alignment = Alignment.CenterHorizontally)
-                                .padding(start = 5.dp, end = 5.dp)
-                        ) {
-                            Text(text = "Nested Navigation")
-                        }
+                        DisplayButton(onClick = {
+                            val navigate = Intent(this@MainActivity, TodoActivity::class.java)
+                            startActivity(navigate)
+                        }, text = "Navigate Todo(Room)Activity")
 
-                        Button(
-                            onClick = {
-                                val navigate =
-                                    Intent(this@MainActivity, NavGraphActivity::class.java)
-                                startActivity(navigate)
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .align(alignment = Alignment.CenterHorizontally)
-                                .padding(start = 5.dp, end = 5.dp)
-                        ) {
-                            Text(text = "NavGraph argument")
-                        }
-                        Button(
-                            onClick = {
-                                val navigate =
-                                    Intent(this@MainActivity, PassingDataNavHost::class.java)
-                                startActivity(navigate)
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .align(alignment = Alignment.CenterHorizontally)
-                                .padding(start = 5.dp, end = 5.dp)
-                        ) {
-                            Text(text = "Passing Data Via NavHost")
-                        }
+                        DisplayButton(onClick = {
+                            val navigate = Intent(this@MainActivity, RetrofitActivity::class.java)
+                            startActivity(navigate)
+                        }, text = "Navigate Retrofit Activity")
 
-                        Button(
-                            onClick = {
-                                val navigate =
-                                    Intent(this@MainActivity, AlbumDetailsActivity::class.java)
-                                startActivity(navigate)
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .align(alignment = Alignment.CenterHorizontally)
-                                .padding(start = 5.dp, end = 5.dp)
-                        ) {
-                            Text(text = "Album Details")
-                        }
 
-                        Button(
-                            onClick = {
-                                val navigate =
-                                    Intent(this@MainActivity, LoginActivity::class.java)
-                                startActivity(navigate)
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .align(alignment = Alignment.CenterHorizontally)
-                                .padding(start = 5.dp, end = 5.dp)
-                        ) {
-                            Text(text = "Login UI")
-                        }
-                        Button(
-                            onClick = {
-                                val navigate =
-                                    Intent(this@MainActivity, TestingActivity::class.java)
-                                startActivity(navigate)
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .align(alignment = Alignment.CenterHorizontally)
-                                .padding(start = 5.dp, end = 5.dp)
-                        ) {
-                            Text(text = "TestUI")
-                        }
+                        DisplayButton(onClick = {
+                            val navigate = Intent(this@MainActivity, NoteActivity::class.java)
+                            startActivity(navigate)
+                        }, text = "Notes Activity")
 
+                        DisplayButton(onClick = {
+                            val navigate = Intent(this@MainActivity, NestedNavigation::class.java)
+                            startActivity(navigate)
+                        }, text = "Nested Navigation")
+
+                        DisplayButton(onClick = {
+                            val navigate = Intent(this@MainActivity, NavGraphActivity::class.java)
+                            startActivity(navigate)
+                        }, text = "NavGraph argument")
+
+                        DisplayButton(onClick = {
+                            val navigate = Intent(this@MainActivity, PassingDataNavHost::class.java)
+                            startActivity(navigate)
+                        }, text = "Passing Data Via NavHost")
+
+                        DisplayButton(onClick = {
+                            val navigate = Intent(this@MainActivity, AlbumDetailsActivity::class.java)
+                            startActivity(navigate)
+                        }, text = "Album Details")
+
+                        DisplayButton(onClick = {
+                            val navigate = Intent(this@MainActivity, LoginActivity::class.java)
+                            startActivity(navigate)
+                        }, text = "Login UI")
+
+                        DisplayButton(onClick = {
+                            val navigate = Intent(this@MainActivity, TestingActivity::class.java)
+                            startActivity(navigate)
+                        }, text = "TestUI")
 
                     }
 
