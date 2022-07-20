@@ -1,5 +1,6 @@
 package com.example.jetpackcomposepractice.todo.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
@@ -46,6 +47,7 @@ class TodoActivity : ComponentActivity() {
         }
     }
 
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @Composable
     fun AddTolbar() {
         Scaffold(

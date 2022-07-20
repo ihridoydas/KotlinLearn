@@ -8,5 +8,7 @@
     <string name="title_activity_nav_graph">NavGraphActivity</string>
     <string name="title_activity_passing_data_nav_host">PassingDataNavHost</string>
     <string name="title_activity_album_details">AlbumDetailsActivity</string>
-    <string name="title_activity_g">g</string>
+    <string name="title_activity_testing">TestingActivity</string>
+    <string name="increment_counter">Increment Counter</string>
+    <string name="clicks">click: %d</string>
 </resources>
