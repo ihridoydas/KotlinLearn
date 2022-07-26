@@ -1,8 +1,7 @@
 package com.example.jetpackcomposepractice
 
+import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.compose.ui.test.onNodeWithText
-import androidx.compose.ui.test.performClick
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.jetpackcomposepractice.learnTesting.TestingActivity
@@ -12,6 +11,7 @@ import org.junit.runner.RunWith
 
 import org.junit.Assert.*
 import org.junit.Rule
+import kotlin.math.acos
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -35,6 +35,23 @@ class CounterTest {
         val textClick = composeTestRule.activity.getString(R.string.clicks,1)
         composeTestRule.onNodeWithText(textIncrement).performClick()
         composeTestRule.onNodeWithText(textClick).assertExists()
+
+    }
+
+    @Test
+    fun whenClickButton_TheTextShow(){
+//        composeTestRule.onNodeWithText("Hello").assertExists()
+//        composeTestRule.onNodeWithText("Hello").performClick()
+//        composeTestRule.onNodeWithText("Hello").assertDoesNotExist()
+//        composeTestRule.onNodeWithText("Bye").assertExists()
+
+        composeTestRule.onNodeWithTag("MyTestTag").assertTextEquals("Hello")
+        composeTestRule.onNodeWithTag("MyTestTag").performClick()
+        composeTestRule.onNodeWithText("Hello").assertDoesNotExist()
+        composeTestRule.onNodeWithTag("MyTestTag").assertTextEquals("Bye")
+        //With Log
+        composeTestRule.onNodeWithTag("MyTestTag").printToLog("XXX")
+
 
     }
 
