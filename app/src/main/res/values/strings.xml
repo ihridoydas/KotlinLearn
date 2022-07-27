@@ -11,4 +11,5 @@
     <string name="title_activity_testing">TestingActivity</string>
     <string name="increment_counter">Increment Counter</string>
     <string name="clicks">click: %d</string>
+    <string name="title_activity_todo_main">TodoMainActivity</string>
 </resources>

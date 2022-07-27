@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.animateContentSize
@@ -24,9 +23,6 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.Bottom
-import androidx.compose.ui.Alignment.Companion.BottomCenter
-import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
@@ -55,7 +51,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.jetpackcomposepractice.albumFeature.AlbumDetailsActivity
@@ -64,12 +59,13 @@ import com.example.jetpackcomposepractice.feature_note.NoteActivity
 import com.example.jetpackcomposepractice.learnTesting.TestingActivity
 import com.example.jetpackcomposepractice.navigationPassingDataNavHost.PassingDataNavHost
 import com.example.jetpackcomposepractice.nestedNavigation.NestedNavigation
-import com.example.jetpackcomposepractice.nestedNavigation.graphs.RootNavigationGraph
 import com.example.jetpackcomposepractice.retrofitAPI.RetrofitActivity
 import com.example.jetpackcomposepractice.screen.NavGraphActivity
-import com.example.jetpackcomposepractice.screen.SetupNavGraph
 import com.example.jetpackcomposepractice.todo.ui.TodoActivity
-import com.example.jetpackcomposepractice.ui.theme.*
+import com.example.jetpackcomposepractice.todoMVVM.TodoMainActivity
+import com.example.jetpackcomposepractice.ui.theme.JetPackComposePracticeTheme
+import com.example.jetpackcomposepractice.ui.theme.Shapes
+import com.example.jetpackcomposepractice.ui.theme.SplashFont
 import com.example.jetpackcomposepractice.uiPractice.loginScreen.LoginActivity
 import kotlin.random.Random
 
@@ -249,7 +245,12 @@ class MainActivity : ComponentActivity() {
                         DisplayButton(onClick = {
                             val navigate = Intent(this@MainActivity, TestingActivity::class.java)
                             startActivity(navigate)
-                        }, text = "TestUI")
+                        }, text = "UI Test")
+
+                        DisplayButton(onClick = {
+                            val navigate = Intent(this@MainActivity, TodoMainActivity::class.java)
+                            startActivity(navigate)
+                        }, text = "Todo MVVM")
 
                     }
 
