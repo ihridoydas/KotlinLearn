@@ -1,4 +1,4 @@
-# Some Config for new Project(2022/7/09)
+# Some Config for new Project(2022/7/27)
 # Lets setup XML(without Compose) Dependency
 
 ## Plugins
@@ -140,13 +140,15 @@ dependencies {
 ```
 buildscript {
     ext {
-        compose_version = '1.2.0-alpha07'
-        ktx_coroutine_version = '1.6.1'
+        compose_version = '1.1.1'
         hilt_version = '2.41'
-        lifecycle_version = '2.4.0'
-        navigation_version = '2.4.2'
-        material3_version = '1.0.0-alpha09'
         room_version = "2.4.2"
+        retrofitVersion = '2.9.0'
+        kotlin_version = "1.6.10"
+        accompanist_version = '0.20.2'
+        lifecycle_version = "2.5.0-rc01"
+        material3_version = '1.0.0-alpha09'
+        ktx_coroutine_version = '1.6.1'
         camerax_version = '1.0.1'
     }
 
@@ -235,82 +237,150 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    implementation 'com.google.android.material:material:1.5.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.security:security-crypto-ktx:1.1.0-alpha03'
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$ktx_coroutine_version"
-    implementation 'androidx.activity:activity-compose:1.4.0'
-    implementation "androidx.compose.foundation:foundation:$compose_version"
-    implementation "androidx.compose.foundation:foundation-layout:$compose_version"
+ implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.8.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
     implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.ui:ui-viewbinding:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.material:material-icons-extended:$compose_version"
-    implementation "androidx.compose.runtime:runtime:$compose_version"
-    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
-    implementation "androidx.compose.material3:material3:$material3_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
-    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
-    implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.0'
+    implementation 'androidx.activity:activity-compose:1.5.0'
+    testImplementation 'junit:junit:4.12'
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
-    testImplementation "androidx.room:room-testing:$room_version"
 
-    //implementation "androidx.camera:camera-core:$camerax_version"
-    //implementation "androidx.camera:camera-camera2:$camerax_version"
-    //implementation "androidx.camera:camera-lifecycle:$camerax_version"
-    //implementation 'androidx.camera:camera-view:1.0.0-alpha28'
+    //material 3
+    implementation "androidx.compose.material3:material3:$material3_version"
 
-    implementation "com.google.accompanist:accompanist-permissions:0.18.0"
-    implementation "io.coil-kt:coil-compose:1.3.2"
+    //Materials Icons
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
 
-    implementation 'com.github.SmartToolFactory:Compose-Colorful-Sliders:1.0.1'
-    def nav_version = "2.4.2"
-    implementation("androidx.navigation:navigation-compose:$nav_version")
 
-    // Splash API
-    implementation("androidx.core:core-splashscreen:1.0.0-beta02")
+    // Compose dependencies
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0-alpha01"
+    implementation "androidx.hilt:hilt-navigation-compose:1.0.0"
 
-    // Preview dependencies
-    debugImplementation "androidx.compose.ui:ui-tooling:1.1.1"
-    implementation "androidx.compose.ui:ui-tooling-preview:1.1.1"
+
+    //Room
+    implementation "androidx.room:room-ktx:$room_version"
+    implementation "androidx.room:room-runtime:$room_version"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    //moshi
+    implementation("com.squareup.moshi:moshi-kotlin:1.12.0")
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+
+    //Ok Http
+    implementation "com.squareup.okhttp3:okhttp:4.9.3"
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+
+    //dagger hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    kapt "androidx.hilt:hilt-compiler:1.0.0"
+
+
+    kapt("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.3.0")
+
+    //kotlin Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$ktx_coroutine_version"
+
+    // android ktx
+    implementation 'androidx.activity:activity-ktx:1.5.0'
+
+    //hilt viewmodel
+    // implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
+
+    //pager
+    implementation "com.google.accompanist:accompanist-pager:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-pager-indicators:$accompanist_version"
+
+    //navigation
+    implementation("androidx.navigation:navigation-compose:2.5.0")
+
+    // Coil Image Dependency
+    implementation("io.coil-kt:coil-compose:2.1.0")
+
+    //LiveData
+    implementation("androidx.compose.runtime:runtime:1.3.0-alpha01")
+    implementation("androidx.compose.runtime:runtime-livedata:1.3.0-alpha01")
+    implementation("androidx.compose.runtime:runtime-rxjava2:1.3.0-alpha01")
+
+    //Gson
+    implementation 'com.google.code.gson:gson:2.9.0'
+
+    // Accompanist (Jetpack Compose Flow Layouts)
+    implementation "com.google.accompanist:accompanist-flowlayout:0.15.0"
+    // Accompanist (Jetpack Compose Pager, indicator)
+    implementation "com.google.accompanist:accompanist-pager:0.24.6-alpha"
+    implementation "com.google.accompanist:accompanist-swiperefresh:0.24.6-alpha"
 
     // Accompanist (System UI Controller)
     implementation 'com.google.accompanist:accompanist-systemuicontroller:0.17.0'
     implementation 'com.google.accompanist:accompanist-insets:0.17.0'
 
-    // Barcode (Use this dependency to bundle the model with your app)
-    implementation 'com.google.mlkit:barcode-scanning:17.0.2'
+    //Camera
+    implementation "androidx.camera:camera-core:$camerax_version"
+    implementation "androidx.camera:camera-camera2:$camerax_version"
+    implementation "androidx.camera:camera-lifecycle:$camerax_version"
+    implementation 'androidx.camera:camera-view:1.0.0-alpha28'
 
-    // Accompanist (Jetpack Compose Flow Layouts)
-    implementation "com.google.accompanist:accompanist-flowlayout:0.15.0"
-
-    // Accompanist (Jetpack Compose Pager, indicator)
-    implementation "com.google.accompanist:accompanist-pager:0.24.6-alpha"
-    implementation "com.google.accompanist:accompanist-swiperefresh:0.24.6-alpha"
-
+    // Splash API
+    implementation("androidx.core:core-splashscreen:1.0.0-rc01")
 
     // Preferences DataStore
     implementation "androidx.datastore:datastore-preferences:1.0.0"
 
 
-    // Firebase
-    implementation platform('com.google.firebase:firebase-bom:30.2.0')
-    implementation 'com.google.firebase:firebase-analytics-ktx'
+    // Local unit tests
+    testImplementation "androidx.test:core:1.4.0"
+    testImplementation "junit:junit:4.13.2"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$ktx_coroutine_version"
+    testImplementation "com.squareup.okhttp3:mockwebserver:4.9.1"
+    testImplementation "io.mockk:mockk:1.10.5"
+    // Mockk
+    androidTestImplementation "io.mockk:mockk-android:1.10.5"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:1.3.0-alpha01"
 
-}
+    // Instrumentation tests
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.41'
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
+    androidTestImplementation "junit:junit:4.13.2"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$ktx_coroutine_version"
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
+    //Truth Dependency
+    androidTestImplementation "com.google.truth:truth:1.1.3"
+    testImplementation "com.google.truth:truth:1.1.3"
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test:core-ktx:1.4.0'
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:4.9.1"
+    androidTestImplementation "io.mockk:mockk-android:1.10.5"
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'com.linkedin.dexmaker:dexmaker-mockito:2.28.3'
+
+    //Testing Dependency
+    testImplementation 'junit:junit:'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    testImplementation "com.google.truth:truth:1.1.3"
+
+
 
 
 ```
