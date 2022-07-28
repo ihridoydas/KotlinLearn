@@ -6,8 +6,8 @@ buildscript {
         retrofitVersion = '2.9.0'
         kotlin_version = "1.6.10"
         accompanist_version = '0.20.2'
-        lifecycle_version = "2.5.0-rc01"
-        material3_version = '1.0.0-alpha09'
+        lifecycle_version = "2.6.0-alpha01"
+        material3_version = "1.0.0-alpha14"
         ktx_coroutine_version = '1.6.1'
         camerax_version = '1.0.1'
 
@@ -23,6 +23,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:7.0.4"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

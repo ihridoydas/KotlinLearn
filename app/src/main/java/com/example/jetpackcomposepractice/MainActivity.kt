@@ -59,11 +59,13 @@ import com.example.jetpackcomposepractice.feature_note.NoteActivity
 import com.example.jetpackcomposepractice.learnTesting.TestingActivity
 import com.example.jetpackcomposepractice.navigationPassingDataNavHost.PassingDataNavHost
 import com.example.jetpackcomposepractice.nestedNavigation.NestedNavigation
+import com.example.jetpackcomposepractice.paging3.Paging3Activity
 import com.example.jetpackcomposepractice.retrofitAPI.RetrofitActivity
 import com.example.jetpackcomposepractice.screen.NavGraphActivity
 import com.example.jetpackcomposepractice.tabLayout.TabLayoutActivity
 import com.example.jetpackcomposepractice.todo.ui.TodoActivity
 import com.example.jetpackcomposepractice.todoMVVM.TodoMainActivity
+import com.example.jetpackcomposepractice.topBarWithNavGraph.TopBarNavGraphActivity
 import com.example.jetpackcomposepractice.ui.theme.JetPackComposePracticeTheme
 import com.example.jetpackcomposepractice.ui.theme.Shapes
 import com.example.jetpackcomposepractice.ui.theme.SplashFont
@@ -234,7 +236,8 @@ class MainActivity : ComponentActivity() {
                         }, text = "Passing Data Via NavHost")
 
                         DisplayButton(onClick = {
-                            val navigate = Intent(this@MainActivity, AlbumDetailsActivity::class.java)
+                            val navigate =
+                                Intent(this@MainActivity, AlbumDetailsActivity::class.java)
                             startActivity(navigate)
                         }, text = "Album Details")
 
@@ -257,6 +260,19 @@ class MainActivity : ComponentActivity() {
                             val navigate = Intent(this@MainActivity, TabLayoutActivity::class.java)
                             startActivity(navigate)
                         }, text = "Tab Layout")
+
+                        DisplayButton(onClick = {
+                            val navigate =
+                                Intent(this@MainActivity, TopBarNavGraphActivity::class.java)
+                            startActivity(navigate)
+                        }, text = "NavGraph With Topbar and Animation")
+
+                        DisplayButton(onClick = {
+                            val navigate =
+                                Intent(this@MainActivity, Paging3Activity::class.java)
+                            startActivity(navigate)
+                        }, text = "Paging 3 Practice")
+
 
                     }
 

@@ -17,6 +17,16 @@
         android:theme="@style/Theme.JetPackComposePractice"
         tools:targetApi="31">
         <activity
+            android:name=".paging3.Paging3Activity"
+            android:exported="false"
+            android:label="@string/title_activity_paging3"
+            android:theme="@style/Theme.JetPackComposePractice" />
+        <activity
+            android:name=".topBarWithNavGraph.TopBarNavGraphActivity"
+            android:exported="false"
+            android:label="@string/title_activity_top_bar_nav_graph"
+            android:theme="@style/Theme.JetPackComposePractice" />
+        <activity
             android:name=".tabLayout.TabLayoutActivity"
             android:exported="false"
             android:label="@string/title_activity_tab_layout"

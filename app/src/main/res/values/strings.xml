@@ -13,4 +13,6 @@
     <string name="clicks">click: %d</string>
     <string name="title_activity_todo_main">TodoMainActivity</string>
     <string name="title_activity_tab_layout">TabLayoutActivity</string>
+    <string name="title_activity_top_bar_nav_graph">TopBarNavGraphActivity</string>
+    <string name="title_activity_paging3">Paging3Activity</string>
 </resources>
