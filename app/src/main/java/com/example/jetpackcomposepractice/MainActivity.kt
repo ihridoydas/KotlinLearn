@@ -61,6 +61,7 @@ import com.example.jetpackcomposepractice.navigationPassingDataNavHost.PassingDa
 import com.example.jetpackcomposepractice.nestedNavigation.NestedNavigation
 import com.example.jetpackcomposepractice.retrofitAPI.RetrofitActivity
 import com.example.jetpackcomposepractice.screen.NavGraphActivity
+import com.example.jetpackcomposepractice.tabLayout.TabLayoutActivity
 import com.example.jetpackcomposepractice.todo.ui.TodoActivity
 import com.example.jetpackcomposepractice.todoMVVM.TodoMainActivity
 import com.example.jetpackcomposepractice.ui.theme.JetPackComposePracticeTheme
@@ -251,6 +252,11 @@ class MainActivity : ComponentActivity() {
                             val navigate = Intent(this@MainActivity, TodoMainActivity::class.java)
                             startActivity(navigate)
                         }, text = "Todo MVVM")
+
+                        DisplayButton(onClick = {
+                            val navigate = Intent(this@MainActivity, TabLayoutActivity::class.java)
+                            startActivity(navigate)
+                        }, text = "Tab Layout")
 
                     }
 

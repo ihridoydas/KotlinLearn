@@ -141,8 +141,8 @@ dependencies {
     implementation "com.google.accompanist:accompanist-swiperefresh:0.24.6-alpha"
 
     // Accompanist (System UI Controller)
-    implementation 'com.google.accompanist:accompanist-systemuicontroller:0.17.0'
-    implementation 'com.google.accompanist:accompanist-insets:0.17.0'
+    implementation "com.google.accompanist:accompanist-systemuicontroller:$accompanist_version"
+    implementation "com.google.accompanist:accompanist-insets:$accompanist_version"
 
     //Camera
     implementation "androidx.camera:camera-core:$camerax_version"
@@ -150,7 +150,12 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
     implementation 'androidx.camera:camera-view:1.0.0-alpha28'
 
+    // Splash API
+    implementation("androidx.core:core-splashscreen:1.0.0-rc01")
 
+    // Preferences DataStore
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+    
     // Local unit tests
     testImplementation "androidx.test:core:1.4.0"
     testImplementation "junit:junit:4.13.2"
@@ -186,8 +191,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     testImplementation "com.google.truth:truth:1.1.3"
-
-
 
 
 }

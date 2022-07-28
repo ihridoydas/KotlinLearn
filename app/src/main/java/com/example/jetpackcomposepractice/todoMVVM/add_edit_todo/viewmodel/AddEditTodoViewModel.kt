@@ -77,8 +77,9 @@ class AddEditTodoViewModel @Inject constructor(
                             id = todo?.id
                         )
                     )
+                    sendUIEvent(UiEvent.PopBackStack)
                 }
-                sendUIEvent(UiEvent.PopBackStack)
+
 
             }
         }
