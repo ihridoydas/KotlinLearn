@@ -1,11 +1,14 @@
 package com.example.jetpackcomposepractice.di
 
 import android.app.Application
+import android.content.Context
 import androidx.room.Room
 import com.example.jetpackcomposepractice.feature_note.data.data_source.NoteDatabase
 import com.example.jetpackcomposepractice.feature_note.data.repository.NoteRepositoryImpl
 import com.example.jetpackcomposepractice.feature_note.domain.repository.NoteRepository
 import com.example.jetpackcomposepractice.feature_note.domain.use_case.*
+import com.example.jetpackcomposepractice.paging3.data.local.UnsplashDatabase
+import com.example.jetpackcomposepractice.paging3.utli.Constants.UNSPLASH_DATABASE
 import com.example.jetpackcomposepractice.retrofitAPI.network.Apiservice
 import com.example.jetpackcomposepractice.retrofitAPI.repository.DataRepository
 import com.example.jetpackcomposepractice.todo.data.dao.TodoDao
@@ -18,6 +21,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -106,5 +110,17 @@ object DatabaseModule {
         return TodoRepositoryImpl(db.todoDao)
     }
 
+    //Unsplash Api Learn
+    @Provides
+    @Singleton
+    fun provideUnsplashDatabase(
+        @ApplicationContext context: Context
+    ): UnsplashDatabase {
+        return Room.databaseBuilder(
+            context,
+            UnsplashDatabase::class.java,
+            UNSPLASH_DATABASE
+        ).build()
+    }
 
 }
