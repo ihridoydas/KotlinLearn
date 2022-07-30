@@ -7,11 +7,8 @@ import com.example.jetpackcomposepractice.paging3.data.local.dao.UnsplashRemoteK
 import com.example.jetpackcomposepractice.paging3.model.UnsplashImage
 import com.example.jetpackcomposepractice.paging3.model.UnsplashRemoteKeys
 
-@Database(
-    entities = [UnsplashImage::class, UnsplashRemoteKeys::class],
-    version = 1,
-    exportSchema = false
-)
+
+@Database(entities = [UnsplashImage::class, UnsplashRemoteKeys::class], version = 1)
 abstract class UnsplashDatabase : RoomDatabase() {
 
     abstract fun unsplashImageDao(): UnsplashImageDao

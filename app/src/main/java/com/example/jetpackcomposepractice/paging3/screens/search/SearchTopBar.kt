@@ -1,4 +1,4 @@
-package com.example.jetpackcomposepractice.paging3.screen.search
+package com.example.jetpackcomposepractice.paging3.screens.search
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.example.jetpackcomposepractice.paging3.ui.theme.topAppBarBackgroundColor
 import com.example.jetpackcomposepractice.paging3.ui.theme.topAppBarContentColor
 
+
 @Composable
 fun SearchWidget(
     text: String,
@@ -32,7 +33,7 @@ fun SearchWidget(
             .fillMaxWidth()
             .height(56.dp)
             .semantics {
-                contentDescription = "SearchWidget"
+                var contentDescription = "SearchWidget"
             },
         elevation = AppBarDefaults.TopAppBarElevation,
         color = MaterialTheme.colors.topAppBarBackgroundColor

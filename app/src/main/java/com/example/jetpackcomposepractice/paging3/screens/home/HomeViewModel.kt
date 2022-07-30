@@ -1,8 +1,8 @@
-package com.example.jetpackcomposepractice.paging3.screen.home
+package com.example.jetpackcomposepractice.paging3.screens.home
 
 import androidx.lifecycle.ViewModel
 import androidx.paging.ExperimentalPagingApi
-import com.example.jetpackcomposepractice.paging3.repository.Repository
+import com.example.jetpackcomposepractice.paging3.data.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

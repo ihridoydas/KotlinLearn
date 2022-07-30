@@ -1,4 +1,4 @@
-package com.example.jetpackcomposepractice.paging3.repository
+package com.example.jetpackcomposepractice.paging3.data.repository
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
@@ -9,11 +9,12 @@ import com.example.jetpackcomposepractice.paging3.data.paging.SearchPagingSource
 import com.example.jetpackcomposepractice.paging3.data.paging.UnsplashRemoteMediator
 import com.example.jetpackcomposepractice.paging3.data.remote.UnsplashApi
 import com.example.jetpackcomposepractice.paging3.model.UnsplashImage
-import com.example.jetpackcomposepractice.paging3.utli.Constants.ITEMS_PER_PAGE
+import com.example.jetpackcomposepractice.paging3.util.Constants.ITEMS_PER_PAGE
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-@OptIn(ExperimentalPagingApi::class)
+
+@ExperimentalPagingApi
 class Repository @Inject constructor(
     private val unsplashApi: UnsplashApi,
     private val unsplashDatabase: UnsplashDatabase

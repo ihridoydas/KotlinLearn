@@ -7,8 +7,10 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.jetpackcomposepractice.paging3.model.UnsplashImage
 
+
 @Dao
 interface UnsplashImageDao {
+
     @Query("SELECT * FROM unsplash_image_table")
     fun getAllImages(): PagingSource<Int, UnsplashImage>
 
@@ -17,4 +19,5 @@ interface UnsplashImageDao {
 
     @Query("DELETE FROM unsplash_image_table")
     suspend fun deleteAllImages()
+
 }

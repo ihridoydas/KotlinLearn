@@ -1,17 +1,17 @@
 package com.example.jetpackcomposepractice.paging3.navigation
 
-
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.paging.ExperimentalPagingApi
 import coil.annotation.ExperimentalCoilApi
-import com.example.jetpackcomposepractice.paging3.screen.home.HomeScreen
-import com.example.jetpackcomposepractice.paging3.screen.search.SearchScreen
+import com.example.jetpackcomposepractice.paging3.screens.home.HomeScreen
+import com.example.jetpackcomposepractice.paging3.screens.search.SearchScreen
+
 
 @ExperimentalCoilApi
-@OptIn(ExperimentalPagingApi::class)
+@ExperimentalPagingApi
 @Composable
 fun SetupNavGraph(navController: NavHostController) {
     NavHost(

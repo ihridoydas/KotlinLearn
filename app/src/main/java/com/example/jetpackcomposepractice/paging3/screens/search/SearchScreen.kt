@@ -1,4 +1,4 @@
-package com.example.jetpackcomposepractice.paging3.screen.search
+package com.example.jetpackcomposepractice.paging3.screens.search
 
 import android.annotation.SuppressLint
 import androidx.compose.material.Scaffold
@@ -9,7 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.annotation.ExperimentalCoilApi
-import com.example.jetpackcomposepractice.paging3.screen.common.ListContent
+import com.example.jetpackcomposepractice.paging3.screens.common.ListContent
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")

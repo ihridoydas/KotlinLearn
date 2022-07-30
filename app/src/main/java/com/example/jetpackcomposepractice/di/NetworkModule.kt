@@ -1,7 +1,7 @@
 package com.example.jetpackcomposepractice.di
 
 import com.example.jetpackcomposepractice.paging3.data.remote.UnsplashApi
-import com.example.jetpackcomposepractice.paging3.utli.Constants.UNSPLASH_BASE_URL
+import com.example.jetpackcomposepractice.paging3.util.Constants.UNSPLASH_BASE_URL
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
@@ -15,13 +15,14 @@ import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-@OptIn(ExperimentalSerializationApi::class)
+@ExperimentalSerializationApi
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+
     @Provides
     @Singleton
-    fun providesHttpClient(): OkHttpClient {
+    fun provideHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .readTimeout(15, TimeUnit.SECONDS)
             .connectTimeout(15, TimeUnit.SECONDS)
@@ -30,11 +31,12 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         val contentType = "application/json".toMediaType()
         val json = Json {
             ignoreUnknownKeys = true
         }
+
         return Retrofit.Builder()
             .baseUrl(UNSPLASH_BASE_URL)
             .client(okHttpClient)
@@ -44,9 +46,8 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun providesUnsplashApi(retrofit: Retrofit): UnsplashApi {
+    fun provideUnsplashApi(retrofit: Retrofit): UnsplashApi {
         return retrofit.create(UnsplashApi::class.java)
-
     }
 
 }

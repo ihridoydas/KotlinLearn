@@ -8,7 +8,7 @@ import com.example.jetpackcomposepractice.feature_note.data.repository.NoteRepos
 import com.example.jetpackcomposepractice.feature_note.domain.repository.NoteRepository
 import com.example.jetpackcomposepractice.feature_note.domain.use_case.*
 import com.example.jetpackcomposepractice.paging3.data.local.UnsplashDatabase
-import com.example.jetpackcomposepractice.paging3.utli.Constants.UNSPLASH_DATABASE
+import com.example.jetpackcomposepractice.paging3.util.Constants.UNSPLASH_DATABASE
 import com.example.jetpackcomposepractice.retrofitAPI.network.Apiservice
 import com.example.jetpackcomposepractice.retrofitAPI.repository.DataRepository
 import com.example.jetpackcomposepractice.todo.data.dao.TodoDao
@@ -113,7 +113,7 @@ object DatabaseModule {
     //Unsplash Api Learn
     @Provides
     @Singleton
-    fun provideUnsplashDatabase(
+    fun provideDatabase(
         @ApplicationContext context: Context
     ): UnsplashDatabase {
         return Room.databaseBuilder(

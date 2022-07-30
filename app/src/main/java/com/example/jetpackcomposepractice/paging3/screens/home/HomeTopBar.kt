@@ -1,12 +1,8 @@
-package com.example.jetpackcomposepractice.paging3.screen.home
+package com.example.jetpackcomposepractice.paging3.screens.home
 
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpackcomposepractice.paging3.ui.theme.topAppBarBackgroundColor

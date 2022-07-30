@@ -1,5 +1,4 @@
-package com.example.jetpackcomposepractice.paging3.screen.common
-
+package com.example.jetpackcomposepractice.paging3.screens.common
 
 import android.content.Intent
 import android.net.Uri
@@ -37,6 +36,7 @@ import com.example.jetpackcomposepractice.paging3.model.UnsplashImage
 import com.example.jetpackcomposepractice.paging3.model.Urls
 import com.example.jetpackcomposepractice.paging3.model.User
 import com.example.jetpackcomposepractice.paging3.model.UserLinks
+import com.example.jetpackcomposepractice.paging3.ui.theme.HeartRed
 
 
 @ExperimentalCoilApi
@@ -48,7 +48,6 @@ fun ListContent(items: LazyPagingItems<UnsplashImage>) {
         contentPadding = PaddingValues(all = 12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-
         items(
             items = items,
             key = { unsplashImage ->
@@ -63,19 +62,17 @@ fun ListContent(items: LazyPagingItems<UnsplashImage>) {
 @ExperimentalCoilApi
 @Composable
 fun UnsplashItem(unsplashImage: UnsplashImage) {
-
 //    val painter = rememberImagePainter(data = unsplashImage.urls.regular) {
 //        crossfade(durationMillis = 1000)
 //        error(R.drawable.ic_placeholder)
 //        placeholder(R.drawable.ic_placeholder)
 //    }
-
     val painter = rememberAsyncImagePainter(
         ImageRequest.Builder(LocalContext.current)
             .data(data = unsplashImage.urls.regular)
             .apply(block = fun ImageRequest.Builder.() {
                 placeholder(R.drawable.ic_placeholder)
-                error(R.drawable.error)
+                error(R.drawable.ic_placeholder)
                 crossfade(1000)
                 transformations(
                     // GrayscaleTransformation()
@@ -85,7 +82,6 @@ fun UnsplashItem(unsplashImage: UnsplashImage) {
 
             }).build()
     )
-
 
     val context = LocalContext.current
     Box(
@@ -158,7 +154,7 @@ fun LikeCounter(
         Icon(
             painter = painter,
             contentDescription = "Heart Icon",
-            tint = Color.Red
+            tint = HeartRed
         )
         Divider(modifier = Modifier.width(6.dp))
         Text(
@@ -181,8 +177,7 @@ fun UnsplashImagePreview() {
             id = "1",
             urls = Urls(regular = ""),
             likes = 100,
-            user = User(username = "Stevdza-San", userLinks = UserLinks(html = ""))
-
+            user = User(username = "Hridoy Das", userLinks = UserLinks(html = ""))
         )
     )
 }

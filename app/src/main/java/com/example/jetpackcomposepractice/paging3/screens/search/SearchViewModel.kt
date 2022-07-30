@@ -1,4 +1,4 @@
-package com.example.jetpackcomposepractice.paging3.screen.search
+package com.example.jetpackcomposepractice.paging3.screens.search
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -6,8 +6,8 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.example.jetpackcomposepractice.paging3.data.repository.Repository
 import com.example.jetpackcomposepractice.paging3.model.UnsplashImage
-import com.example.jetpackcomposepractice.paging3.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch

@@ -9,11 +9,11 @@ import com.example.jetpackcomposepractice.paging3.data.local.UnsplashDatabase
 import com.example.jetpackcomposepractice.paging3.data.remote.UnsplashApi
 import com.example.jetpackcomposepractice.paging3.model.UnsplashImage
 import com.example.jetpackcomposepractice.paging3.model.UnsplashRemoteKeys
-import com.example.jetpackcomposepractice.paging3.utli.Constants.ITEMS_PER_PAGE
-import javax.inject.Inject
+import com.example.jetpackcomposepractice.paging3.util.Constants.ITEMS_PER_PAGE
 
-@OptIn(ExperimentalPagingApi::class)
-class UnsplashRemoteMediator @Inject constructor(
+
+@ExperimentalPagingApi
+class UnsplashRemoteMediator(
     private val unsplashApi: UnsplashApi,
     private val unsplashDatabase: UnsplashDatabase
 ) : RemoteMediator<Int, UnsplashImage>() {
@@ -49,7 +49,7 @@ class UnsplashRemoteMediator @Inject constructor(
                 }
             }
 
-            val response = unsplashApi.getAllImages(page = currentPage, perpage = ITEMS_PER_PAGE)
+            val response = unsplashApi.getAllImages(page = currentPage, perPage = ITEMS_PER_PAGE)
             val endOfPaginationReached = response.isEmpty()
 
             val prevPage = if (currentPage == 1) null else currentPage - 1
@@ -63,8 +63,8 @@ class UnsplashRemoteMediator @Inject constructor(
                 val keys = response.map { unsplashImage ->
                     UnsplashRemoteKeys(
                         id = unsplashImage.id,
-                        prevPage = prevPage!!,
-                        nextPage = nextPage!!
+                        prevPage = prevPage,
+                        nextPage = nextPage
                     )
                 }
                 unsplashRemoteKeysDao.addAllRemoteKeys(remoteKeys = keys)
@@ -102,6 +102,6 @@ class UnsplashRemoteMediator @Inject constructor(
             ?.let { unsplashImage ->
                 unsplashRemoteKeysDao.getRemoteKeys(id = unsplashImage.id)
             }
-
     }
+
 }
