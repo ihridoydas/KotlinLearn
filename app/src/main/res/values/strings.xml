@@ -15,6 +15,7 @@
     <string name="title_activity_tab_layout">TabLayoutActivity</string>
     <string name="title_activity_top_bar_nav_graph">TopBarNavGraphActivity</string>
     <string name="title_activity_paging3">Paging3Activity</string>
+    <string name="title_activity_boarding_with_splash_screen">BoardingWithSplashScreen</string>
 
 
 </resources>

@@ -7,6 +7,7 @@ import com.example.jetpackcomposepractice.feature_note.data.data_source.NoteData
 import com.example.jetpackcomposepractice.feature_note.data.repository.NoteRepositoryImpl
 import com.example.jetpackcomposepractice.feature_note.domain.repository.NoteRepository
 import com.example.jetpackcomposepractice.feature_note.domain.use_case.*
+import com.example.jetpackcomposepractice.onboardingCompose.data.DataStoreRepository
 import com.example.jetpackcomposepractice.paging3.data.local.UnsplashDatabase
 import com.example.jetpackcomposepractice.paging3.util.Constants.UNSPLASH_DATABASE
 import com.example.jetpackcomposepractice.retrofitAPI.network.Apiservice
@@ -123,4 +124,10 @@ object DatabaseModule {
         ).build()
     }
 
+    //OnBoarding Data Store --> provideDataStoreRepository 
+    @Provides
+    @Singleton
+    fun provideDataStoreRepository(
+        @ApplicationContext context: Context
+    ) = DataStoreRepository(context = context)
 }

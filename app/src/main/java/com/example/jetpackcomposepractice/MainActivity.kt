@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
@@ -46,6 +47,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -59,6 +61,7 @@ import com.example.jetpackcomposepractice.feature_note.NoteActivity
 import com.example.jetpackcomposepractice.learnTesting.TestingActivity
 import com.example.jetpackcomposepractice.navigationPassingDataNavHost.PassingDataNavHost
 import com.example.jetpackcomposepractice.nestedNavigation.NestedNavigation
+import com.example.jetpackcomposepractice.onboardingCompose.BoardingWithSplashScreen
 import com.example.jetpackcomposepractice.paging3.Paging3Activity
 import com.example.jetpackcomposepractice.retrofitAPI.RetrofitActivity
 import com.example.jetpackcomposepractice.screen.NavGraphActivity
@@ -70,14 +73,19 @@ import com.example.jetpackcomposepractice.ui.theme.JetPackComposePracticeTheme
 import com.example.jetpackcomposepractice.ui.theme.Shapes
 import com.example.jetpackcomposepractice.ui.theme.SplashFont
 import com.example.jetpackcomposepractice.uiPractice.loginScreen.LoginActivity
+import com.google.accompanist.pager.ExperimentalPagerApi
 import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     lateinit var navController: NavHostController
 
-    @OptIn(ExperimentalFoundationApi::class)
+    @OptIn(
+        ExperimentalFoundationApi::class, ExperimentalAnimationApi::class,
+        ExperimentalPagerApi::class
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        installSplashScreen()
         setContent {
             JetPackComposePracticeTheme {
                 //A surface container using the 'background' color from the theme
@@ -273,12 +281,19 @@ class MainActivity : ComponentActivity() {
                             startActivity(navigate)
                         }, text = "Paging 3 Practice")
 
+                        DisplayButton(onClick = {
+                            val navigate =
+                                Intent(this@MainActivity, BoardingWithSplashScreen::class.java)
+                            startActivity(navigate)
+                        }, text = "SplashScreen With OnBoarding")
+
 
                     }
 
                 }
 
             }
+            
         }
     }
 }
