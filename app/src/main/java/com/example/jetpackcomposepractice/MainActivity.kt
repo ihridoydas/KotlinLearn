@@ -285,7 +285,7 @@ class MainActivity : ComponentActivity() {
                             val navigate =
                                 Intent(this@MainActivity, BoardingWithSplashScreen::class.java)
                             startActivity(navigate)
-                        }, text = "SplashScreen With OnBoarding")
+                        }, text = "SplashScreen,OnBoarding & Drawer")
 
 
                     }
