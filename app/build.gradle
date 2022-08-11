@@ -168,11 +168,14 @@ dependencies {
     implementation 'androidx.camera:camera-view:1.0.0-alpha28'
 
     // Splash API
-    implementation("androidx.core:core-splashscreen:1.0.0-rc01")
+    implementation("androidx.core:core-splashscreen:1.0.0")
 
     // Preferences DataStore
     implementation "androidx.datastore:datastore-preferences:1.0.0"
-    
+
+    //Jetpack Compose Permissions
+    implementation "com.google.accompanist:accompanist-permissions:$accompanist_version"
+
     // Local unit tests
     testImplementation "androidx.test:core:1.4.0"
     testImplementation "junit:junit:4.13.2"

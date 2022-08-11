@@ -5,6 +5,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!--    For Permission Activity-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:name=".BaseApplication"
         android:allowBackup="true"
@@ -17,13 +21,15 @@
         android:theme="@style/Theme.CustomSplashScreenTheme"
         tools:targetApi="31">
         <activity
+            android:name=".permissionCheck.PermissionActivity"
+            android:exported="false"
+            android:label="@string/title_activity_permission"
+            android:theme="@style/Theme.CustomSplashScreenTheme" />
+        <activity
             android:name=".onboardingCompose.BoardingWithSplashScreen"
             android:exported="false"
             android:label="@string/title_activity_boarding_with_splash_screen"
-            android:theme="@style/Theme.CustomSplashScreenTheme">
-
-
-        </activity>
+            android:theme="@style/Theme.CustomSplashScreenTheme"></activity>
         <activity
             android:name=".paging3.Paging3Activity"
             android:exported="false"
@@ -101,9 +107,9 @@
             android:theme="@style/Theme.CustomSplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".viewPager.OnBoardingActivity"

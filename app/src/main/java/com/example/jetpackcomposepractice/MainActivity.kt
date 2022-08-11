@@ -63,6 +63,7 @@ import com.example.jetpackcomposepractice.navigationPassingDataNavHost.PassingDa
 import com.example.jetpackcomposepractice.nestedNavigation.NestedNavigation
 import com.example.jetpackcomposepractice.onboardingCompose.BoardingWithSplashScreen
 import com.example.jetpackcomposepractice.paging3.Paging3Activity
+import com.example.jetpackcomposepractice.permissionCheck.PermissionActivity
 import com.example.jetpackcomposepractice.retrofitAPI.RetrofitActivity
 import com.example.jetpackcomposepractice.screen.NavGraphActivity
 import com.example.jetpackcomposepractice.tabLayout.TabLayoutActivity
@@ -286,6 +287,12 @@ class MainActivity : ComponentActivity() {
                                 Intent(this@MainActivity, BoardingWithSplashScreen::class.java)
                             startActivity(navigate)
                         }, text = "SplashScreen,OnBoarding & Drawer")
+
+                        DisplayButton(onClick = {
+                            val navigate =
+                                Intent(this@MainActivity, PermissionActivity::class.java)
+                            startActivity(navigate)
+                        }, text = "Android Permission")
 
 
                     }
