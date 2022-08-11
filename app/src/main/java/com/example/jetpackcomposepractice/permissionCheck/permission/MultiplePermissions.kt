@@ -1,6 +1,9 @@
 package com.example.jetpackcomposepractice.permissionCheck.permission
 
 import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
 import com.google.accompanist.permissions.*
 
 @ExperimentalPermissionsApi
@@ -11,7 +14,26 @@ fun RequestMultiplePermissions(
     rationaleMessage: String = "To use this app's functionalities, you need to give us the permission.",
 ) {
     val multiplePermissionsState = rememberMultiplePermissionsState(permissions)
+    val lifecycleOwner = LocalLifecycleOwner.current
+    var per: Unit? = null
 
+    DisposableEffect(
+        key1 = lifecycleOwner,
+        effect = {
+            val observer = LifecycleEventObserver { _, event ->
+                if (event == Lifecycle.Event.ON_START) {
+                    per = multiplePermissionsState.launchMultiplePermissionRequest()
+                }
+
+            }
+            lifecycleOwner.lifecycle.addObserver(observer)
+            onDispose {
+                lifecycleOwner.lifecycle.removeObserver(observer)
+
+            }
+
+        }
+    )
     HandleRequests(
         multiplePermissionsState = multiplePermissionsState,
         deniedContent = { shouldShowRationale ->
@@ -19,7 +41,10 @@ fun RequestMultiplePermissions(
                 deniedMessage = deniedMessage,
                 rationaleMessage = rationaleMessage,
                 shouldShowRationale = shouldShowRationale,
-                onRequestPermission = { multiplePermissionsState.launchMultiplePermissionRequest() }
+                onRequestPermission = {
+                    //    //Trigger in OnStart in lifecycle
+                    per = multiplePermissionsState.launchMultiplePermissionRequest()
+                }
             )
         },
         content = {

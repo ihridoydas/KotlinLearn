@@ -6,12 +6,16 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
 import com.google.accompanist.permissions.*
 
 
@@ -23,6 +27,26 @@ fun RequestPermission(
     rationaleMessage: String = "To use this app's functionalities, you need to give us the permission.",
 ) {
     val permissionState = rememberPermissionState(permission)
+    val lifecycleOwner = LocalLifecycleOwner.current
+    var per: Unit? = null
+
+    DisposableEffect(
+        key1 = lifecycleOwner,
+        effect = {
+            val observer = LifecycleEventObserver { _, event ->
+                if (event == Lifecycle.Event.ON_START) {
+                    per = permissionState.launchPermissionRequest()
+                }
+
+            }
+            lifecycleOwner.lifecycle.addObserver(observer)
+            onDispose {
+                lifecycleOwner.lifecycle.removeObserver(observer)
+
+            }
+
+        }
+    )
 
     HandleRequest(
         permissionState = permissionState,
@@ -31,7 +55,9 @@ fun RequestPermission(
                 deniedMessage = deniedMessage,
                 rationaleMessage = rationaleMessage,
                 shouldShowRationale = shouldShowRationale,
-                onRequestPermission = { permissionState.launchPermissionRequest() }
+                onRequestPermission = {
+                    per = permissionState.launchPermissionRequest()
+                }
             )
         },
         content = {
@@ -74,6 +100,7 @@ fun Content(text: String, showButton: Boolean = true, onClick: () -> Unit) {
         if (showButton) {
             Button(onClick = onClick) {
                 Text(text = "Request")
+
             }
         }
     }
