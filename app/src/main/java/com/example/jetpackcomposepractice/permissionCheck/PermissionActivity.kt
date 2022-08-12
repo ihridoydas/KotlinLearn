@@ -10,7 +10,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.jetpackcomposepractice.permissionCheck.permission.RequestPermission
+import com.example.jetpackcomposepractice.permissionCheck.permission.RequestMultiplePermissions
 import com.example.jetpackcomposepractice.permissionCheck.ui.theme.JetPackComposePracticeTheme
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 
@@ -27,13 +27,14 @@ class PermissionActivity : ComponentActivity() {
                 ) {
                     //MultiplePermission()
 
-                    RequestPermission(permission = Manifest.permission.READ_CONTACTS)
-//                    RequestMultiplePermissions(
-//                        permissions = listOf(
-//                            Manifest.permission.READ_CONTACTS,
-//                            Manifest.permission.CAMERA
-//                        )
-//                    )
+                    //   RequestPermission(permission = Manifest.permission.READ_CONTACTS)
+                    RequestMultiplePermissions(
+                        permissions = listOf(
+                            Manifest.permission.READ_CONTACTS,
+                            Manifest.permission.CAMERA,
+                            Manifest.permission.RECORD_AUDIO
+                        )
+                    )
 
                 }
             }

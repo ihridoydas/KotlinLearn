@@ -74,3 +74,4 @@ private fun HandleRequests(
         deniedContent(shouldShowRationale)
     }
 }
+
