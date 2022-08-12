@@ -63,7 +63,7 @@ import com.example.jetpackcomposepractice.navigationPassingDataNavHost.PassingDa
 import com.example.jetpackcomposepractice.nestedNavigation.NestedNavigation
 import com.example.jetpackcomposepractice.onboardingCompose.BoardingWithSplashScreen
 import com.example.jetpackcomposepractice.paging3.Paging3Activity
-import com.example.jetpackcomposepractice.permissionCheck.PermissionActivity
+import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.PermissionActivity
 import com.example.jetpackcomposepractice.retrofitAPI.RetrofitActivity
 import com.example.jetpackcomposepractice.screen.NavGraphActivity
 import com.example.jetpackcomposepractice.tabLayout.TabLayoutActivity

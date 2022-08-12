@@ -1,23 +1,34 @@
-package com.example.jetpackcomposepractice.permissionCheck
+package com.example.jetpackcomposepractice.permissionAndConnectivityCheck
 
 import android.Manifest
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.jetpackcomposepractice.permissionCheck.permission.RequestMultiplePermissions
-import com.example.jetpackcomposepractice.permissionCheck.ui.theme.JetPackComposePracticeTheme
+import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.connectivity.ConnectivityObserver
+import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.connectivity.NetworkConnectivityObserver
+import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.permission.RequestMultiplePermissions
+import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.ui.theme.JetPackComposePracticeTheme
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 
 class PermissionActivity : ComponentActivity() {
+
+    private lateinit var connectivityObserver: ConnectivityObserver
+
     @OptIn(ExperimentalPermissionsApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        connectivityObserver = NetworkConnectivityObserver(applicationContext)
         setContent {
             JetPackComposePracticeTheme {
                 // A surface container using the 'background' color from the theme
@@ -35,6 +46,18 @@ class PermissionActivity : ComponentActivity() {
                             Manifest.permission.RECORD_AUDIO
                         )
                     )
+
+                    //Connectivity check
+                    val status by connectivityObserver.observer().collectAsState(
+                        initial = ConnectivityObserver.Status.Unavailable
+                    )
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.BottomCenter
+                    ) {
+                        Text(text = "Network Status $status")
+                    }
+
 
                 }
             }

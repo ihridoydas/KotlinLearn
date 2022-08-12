@@ -1,4 +1,4 @@
-package com.example.jetpackcomposepractice.permissionCheck.permission
+package com.example.jetpackcomposepractice.permissionAndConnectivityCheck.permission
 
 import android.content.Intent
 import android.net.Uri

@@ -1,4 +1,4 @@
-package com.example.jetpackcomposepractice.permissionCheck.ui.theme
+package com.example.jetpackcomposepractice.permissionAndConnectivityCheck.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

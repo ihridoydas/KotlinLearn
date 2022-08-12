@@ -1,4 +1,4 @@
-package com.example.jetpackcomposepractice.permissionCheck
+package com.example.jetpackcomposepractice.permissionAndConnectivityCheck
 
 //@OptIn(ExperimentalPermissionsApi::class)
 //fun PermissionState.isPermanentDenied(): Boolean {

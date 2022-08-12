@@ -1,4 +1,4 @@
-package com.example.jetpackcomposepractice.permissionCheck.permission
+package com.example.jetpackcomposepractice.permissionAndConnectivityCheck.permission
 
 import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalLifecycleOwner
