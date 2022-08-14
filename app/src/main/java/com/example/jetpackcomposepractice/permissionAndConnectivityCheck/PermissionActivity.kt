@@ -4,6 +4,7 @@ import android.Manifest
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
@@ -17,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.connectivity.ConnectivityObserver
 import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.connectivity.NetworkConnectivityObserver
-import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.permission.RequestMultiplePermissions
+import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.permission.RequestPermission
 import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.ui.theme.JetPackComposePracticeTheme
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 
@@ -25,6 +26,7 @@ class PermissionActivity : ComponentActivity() {
 
     private lateinit var connectivityObserver: ConnectivityObserver
 
+    @RequiresApi(33)
     @OptIn(ExperimentalPermissionsApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,14 +40,15 @@ class PermissionActivity : ComponentActivity() {
                 ) {
                     //MultiplePermission()
 
-                    //   RequestPermission(permission = Manifest.permission.READ_CONTACTS)
-                    RequestMultiplePermissions(
-                        permissions = listOf(
-                            Manifest.permission.READ_CONTACTS,
-                            Manifest.permission.CAMERA,
-                            Manifest.permission.RECORD_AUDIO
-                        )
-                    )
+                    RequestPermission(permission = Manifest.permission.POST_NOTIFICATIONS)
+//                    RequestMultiplePermissions(
+//                        permissions = listOf(
+//                            Manifest.permission.POST_NOTIFICATIONS,
+//                            Manifest.permission.READ_CONTACTS,
+//                            Manifest.permission.CAMERA,
+//                            Manifest.permission.RECORD_AUDIO
+//                        )
+//                    )
 
                     //Connectivity check
                     val status by connectivityObserver.observer().collectAsState(

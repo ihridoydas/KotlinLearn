@@ -2,6 +2,7 @@ package com.example.jetpackcomposepractice.permissionAndConnectivityCheck.permis
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.provider.Settings
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -123,7 +124,11 @@ fun ShowGotoSettingsDialog(
                 contentAlignment = Alignment.BottomEnd
             ) {
                 Text(
-                    text = "Settings",
+                    text = if (Build.VERSION.SDK_INT >= 33) {
+                        "Setting"
+                    } else {
+                        ""
+                    },
                     modifier = Modifier
                         .padding(vertical = 12.dp)
                         .clickable { onSettingsTapped() },
@@ -151,19 +156,21 @@ fun Content(text: String, showButton: Boolean = true, onClick: () -> Unit) {
         if (showButton) {
 //            Button(onClick = onClick) {
 //                Text(text = "Request")
-//
 //            }
-            val context = LocalContext.current
-            ShowGotoSettingsDialog(
-                title = "Allow permission",
-                message = "Please allow Permission",
-                onSettingsTapped = {
-                    Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-                        data = Uri.parse("package:" + context.packageName)
-                        context.startActivity(this)
-                    }
-                },
-            )
+            if (Build.VERSION.SDK_INT >= 33) {
+                val context = LocalContext.current
+                ShowGotoSettingsDialog(
+                    title = "Allow permission",
+                    message = "Please allow Permission",
+                    onSettingsTapped = {
+                        Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                            data = Uri.parse("package:" + context.packageName)
+                            context.startActivity(this)
+                        }
+                    },
+                )
+            }
+
         }
     }
 }
@@ -198,7 +205,14 @@ fun PermissionDeniedContent(
             }
         )
     } else {
-        Content(text = deniedMessage, onClick = onRequestPermission)
+        //  Content(text = deniedMessage, onClick = onRequestPermission)
+        Content(
+            text = if (Build.VERSION.SDK_INT >= 33) {
+                deniedMessage
+            } else {
+                "Notification by Default Granted For Android 12 and lower"
+            }, onClick = onRequestPermission
+        )
     }
 
 }

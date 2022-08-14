@@ -292,7 +292,7 @@ class MainActivity : ComponentActivity() {
                             val navigate =
                                 Intent(this@MainActivity, PermissionActivity::class.java)
                             startActivity(navigate)
-                        }, text = "Android Permission And Connectivity Check")
+                        }, text = "Permission & Connectivity Check")
 
 
                     }
