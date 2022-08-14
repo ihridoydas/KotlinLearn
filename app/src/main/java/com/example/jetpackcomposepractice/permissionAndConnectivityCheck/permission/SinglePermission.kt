@@ -10,8 +10,7 @@ import androidx.compose.material.AlertDialog
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -98,7 +97,8 @@ private fun HandleRequest(
 fun ShowGotoSettingsDialog(
     title: String,
     message: String,
-    onSettingsTapped: () -> Unit
+    onSettingsTapped: () -> Unit,
+    onDismiss: () -> Unit
 ) {
     AlertDialog(
         onDismissRequest = {},
@@ -123,27 +123,37 @@ fun ShowGotoSettingsDialog(
                     .padding(horizontal = 24.dp, vertical = 12.dp),
                 contentAlignment = Alignment.BottomEnd
             ) {
-                Text(
-                    text = if (Build.VERSION.SDK_INT >= 33) {
-                        "Setting"
-                    } else {
-                        ""
-                    },
-                    modifier = Modifier
-                        .padding(vertical = 12.dp)
-                        .clickable { onSettingsTapped() },
-                    style = MaterialTheme.typography.button,
-                    fontWeight = FontWeight.Bold
-                )
+                Row {
+                    Text(
+                        text = "Cancel",
+                        modifier = Modifier
+                            .padding(vertical = 12.dp)
+                            .clickable { onDismiss() },
+                        style = MaterialTheme.typography.button,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.padding(10.dp))
+                    Text(
+                        text = "Setting",
+                        modifier = Modifier
+                            .padding(vertical = 12.dp)
+                            .clickable { onSettingsTapped() },
+                        style = MaterialTheme.typography.button,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+
             }
         },
-        properties = DialogProperties(dismissOnBackPress = false, dismissOnClickOutside = false)
+
+        properties = DialogProperties(dismissOnBackPress = true, dismissOnClickOutside = false)
     )
 }
 
 
 @Composable
 fun Content(text: String, showButton: Boolean = true, onClick: () -> Unit) {
+    var showDialog by remember { mutableStateOf(true) }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -159,16 +169,22 @@ fun Content(text: String, showButton: Boolean = true, onClick: () -> Unit) {
 //            }
             if (Build.VERSION.SDK_INT >= 33) {
                 val context = LocalContext.current
-                ShowGotoSettingsDialog(
-                    title = "Allow permission",
-                    message = "Please allow Permission",
-                    onSettingsTapped = {
-                        Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
-                            data = Uri.parse("package:" + context.packageName)
-                            context.startActivity(this)
+                if (showDialog) {
+                    ShowGotoSettingsDialog(
+                        title = "Allow permission",
+                        message = "Please allow Permission",
+                        onSettingsTapped = {
+                            Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+                                data = Uri.parse("package:" + context.packageName)
+                                context.startActivity(this)
+                            }
+                        },
+                        onDismiss = {
+                            showDialog = false
                         }
-                    },
-                )
+                    )
+                }
+
             }
 
         }
