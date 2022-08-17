@@ -1,11 +1,11 @@
 buildscript {
     ext {
-        compose_version = '1.1.1'
-        hilt_version = '2.41'
-        room_version = "2.4.2"
+        compose_version = '1.2.0'
+        hilt_version = '2.43.2'
+        room_version = "2.4.3"
         retrofitVersion = '2.9.0'
-        kotlin_version = "1.6.10"
-        accompanist_version = '0.20.2'
+        kotlin_version = "1.7.0"
+        accompanist_version = '0.26.1-alpha'
         lifecycle_version = "2.6.0-alpha01"
         material3_version = "1.0.0-alpha14"
         ktx_coroutine_version = '1.6.1'
