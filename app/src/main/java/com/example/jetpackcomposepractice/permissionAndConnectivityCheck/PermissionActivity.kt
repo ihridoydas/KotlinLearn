@@ -1,10 +1,11 @@
 package com.example.jetpackcomposepractice.permissionAndConnectivityCheck
 
-import android.Manifest
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
@@ -15,10 +16,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.connectivity.ConnectivityObserver
 import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.connectivity.NetworkConnectivityObserver
-import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.permission.RequestPermission
 import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.ui.theme.JetPackComposePracticeTheme
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 
@@ -39,8 +40,8 @@ class PermissionActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     //MultiplePermission()
-
-                    RequestPermission(permission = Manifest.permission.POST_NOTIFICATIONS)
+                    BottomSheet()
+                    //RequestPermission(permission = Manifest.permission.POST_NOTIFICATIONS)
 //                    RequestMultiplePermissions(
 //                        permissions = listOf(
 //                            Manifest.permission.POST_NOTIFICATIONS,
@@ -58,7 +59,17 @@ class PermissionActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.BottomCenter
                     ) {
-                        Text(text = "Network Status $status")
+                        val context = LocalContext.current
+                        Text(
+                            modifier = Modifier.clickable {
+                                Toast.makeText(
+                                    context,
+                                    "Clickable..............",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            },
+                            text = "Network Status $status"
+                        )
                     }
 
 
@@ -73,7 +84,7 @@ class PermissionActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview2() {
     JetPackComposePracticeTheme {
-
+        BottomSheet()
     }
 }
 

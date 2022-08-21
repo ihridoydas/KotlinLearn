@@ -48,10 +48,10 @@ fun RequestMultiplePermissions(
             )
         },
         content = {
-            Content(
-                text = "PERMISSION GRANTED!",
-                showButton = false
-            ) {}
+//            Content(
+//                //text = "PERMISSION GRANTED!",
+//                showButton = false
+//            ) {}
         }
     )
 }

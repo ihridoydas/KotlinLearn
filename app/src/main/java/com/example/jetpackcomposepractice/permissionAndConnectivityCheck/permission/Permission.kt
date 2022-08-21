@@ -158,7 +158,7 @@ fun Permission(
     }
 
 
-    HandleRequest(
+    PermissionRequired(
         permissionState = permissionState,
         deniedContent = { shouldShowRationale ->
             Rationale(
@@ -188,7 +188,7 @@ fun Permission(
 
 @ExperimentalPermissionsApi
 @Composable
-private fun HandleRequest(
+private fun PermissionRequired(
     permissionState: PermissionState,
     deniedContent: @Composable (Boolean) -> Unit,
     permissionNotAvailableContent: @Composable () -> Unit = { },

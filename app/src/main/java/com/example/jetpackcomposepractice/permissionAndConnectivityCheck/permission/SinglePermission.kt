@@ -29,8 +29,11 @@ import com.google.accompanist.permissions.*
 @Composable
 fun RequestPermission(
     permission: String,
-    deniedMessage: String = "Give this app a permission to proceed. If it doesn't work, then you'll have to do it manually from the settings.",
-    rationaleMessage: String = "To use this app's functionalities, you need to give us the permission.",
+    rationale: String = "To use this app's functionalities, you need to give us the permission.",
+    permissionNotAvailableContent: @Composable () -> Unit = { },
+    content: @Composable () -> Unit = { }
+    //deniedMessage: String = "Give this app a permission to proceed. If it doesn't work, then you'll have to do it manually from the settings.",
+
 ) {
     val permissionState = rememberPermissionState(permission)
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -54,32 +57,35 @@ fun RequestPermission(
         }
     )
 
-    HandleRequest(
+    PermissionRequired(
         permissionState = permissionState,
-        deniedContent = { shouldShowRationale ->
+        permissionNotGrantedContent = { shouldShowRationale ->
             PermissionDeniedContent(
-                deniedMessage = deniedMessage,
-                rationaleMessage = rationaleMessage,
+                deniedMessage = "Give this app a permission to proceed. If it doesn't work, then you'll have to do it manually from the settings.",
+                rationaleMessage = rationale,
                 shouldShowRationale = shouldShowRationale,
                 onRequestPermission = {
                     per = permissionState.launchPermissionRequest()
                 }
             )
         },
+        permissionNotAvailableContent = permissionNotAvailableContent,
         content = {
-            Content(
-                text = "PERMISSION GRANTED!",
-                showButton = false
-            ) {}
+            content()
+//            Content(
+//                text = "PERMISSION GRANTED!",
+//                showButton = false
+//            ) {}
         }
     )
 }
 
 @ExperimentalPermissionsApi
 @Composable
-private fun HandleRequest(
+private fun PermissionRequired(
     permissionState: PermissionState,
-    deniedContent: @Composable (Boolean) -> Unit,
+    permissionNotGrantedContent: @Composable (Boolean) -> Unit,
+    permissionNotAvailableContent: @Composable () -> Unit = { },
     content: @Composable () -> Unit
 ) {
     when (permissionState.status) {
@@ -87,7 +93,8 @@ private fun HandleRequest(
             content()
         }
         is PermissionStatus.Denied -> {
-            deniedContent(permissionState.status.shouldShowRationale)
+            permissionNotAvailableContent()
+            permissionNotGrantedContent(permissionState.status.shouldShowRationale)
         }
     }
 }
