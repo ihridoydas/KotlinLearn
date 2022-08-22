@@ -16,15 +16,6 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.JetPackComposePractice.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-    <style name="Theme.JetPackComposePractice.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.JetPackComposePractice.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
     <style name="Theme.CustomSplashScreenTheme" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/white</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/myname</item>
