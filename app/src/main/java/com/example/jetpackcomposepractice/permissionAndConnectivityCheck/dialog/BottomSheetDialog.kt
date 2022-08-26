@@ -23,7 +23,9 @@
 //import androidx.lifecycle.ViewTreeLifecycleOwner
 //import androidx.lifecycle.ViewTreeViewModelStoreOwner
 //import androidx.savedstate.ViewTreeSavedStateRegistryOwner
+//import androidx.savedstate.setViewTreeSavedStateRegistryOwner
 //import com.google.android.material.bottomsheet.BottomSheetDialog
+//import kotlinx.serialization.json.JsonNull.content
 //import java.util.*
 //
 //@Immutable
@@ -146,7 +148,14 @@
 //        )
 //
 //
-//        //composeView.setViewTreeSavedStateRegistryOwner(owner = lifecycle)
+//        composeView.setViewTreeSavedStateRegistryOwner(owner =)
+//
+//        ComposeView(this).also {
+//            it.setContent(content)
+//            ViewTreeLifecycleOwner.set(it, this)
+//            ViewTreeViewModelStoreOwner.set(it, this)
+//            it.setViewTreeSavedStateRegistryOwner(this)
+//        }
 //
 //        ViewTreeSavedStateRegistryOwner.set(
 //            bottomSheetDialogLayout,

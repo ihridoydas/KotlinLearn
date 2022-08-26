@@ -1,33 +1,32 @@
 package com.example.jetpackcomposepractice.permissionAndConnectivityCheck
 
+import android.Manifest
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.jetpackcomposepractice.customDialog.MainContentCustomDialog
 import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.connectivity.ConnectivityObserver
 import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.connectivity.NetworkConnectivityObserver
 import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.dialog.CustomDialog
 import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.modalTransitionDialog.BottmSheetDialog
+import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.permission.RequestMultiplePermissions
 import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.ui.theme.JetPackComposePracticeTheme
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
-
 
 class PermissionActivity : ComponentActivity() {
 
@@ -45,6 +44,48 @@ class PermissionActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+                    //------------------------------------
+
+                    //Bottom Sheet
+                    BottomSheet()
+
+                    //RequestPermission(permission = Manifest.permission.POST_NOTIFICATIONS)
+                    if (Build.VERSION.SDK_INT >= 33) {
+                        RequestMultiplePermissions(
+                            permissions = listOf(
+                                Manifest.permission.POST_NOTIFICATIONS,
+                            )
+                        )
+                    }
+
+
+                    //Connectivity check
+                    val status by connectivityObserver.observer().collectAsState(
+                        initial = ConnectivityObserver.Status.Unavailable
+                    )
+                    Box(
+                        modifier = Modifier.fillMaxWidth(),
+                        contentAlignment = Alignment.BottomCenter
+                    ) {
+                        val context = LocalContext.current
+                        Text(
+                            modifier = Modifier.clickable {
+                                Toast.makeText(
+                                    context,
+                                    "Clickable..............",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            },
+                            text = "Network Status $status"
+                        )
+                    }
+                    MainContentCustomDialog()
+
+                    //Simple Call back Alert Button
+                    AlertButton()
+                    //------------------------------------
+
+
 //                    Dialog(
 //                        content = {
 //                            Text(text = "Heelo")
@@ -70,44 +111,13 @@ class PermissionActivity : ComponentActivity() {
 
 
                     //Custom Dialog 
-                    Column {
-                        ShowCustomDialog()
-
-                    }
+//                    Column {
+//                        ShowCustomDialog()
+//
+//                    }
 
                     //MultiplePermission()
-                    // BottomSheet()
-                    //RequestPermission(permission = Manifest.permission.POST_NOTIFICATIONS)
-//                    RequestMultiplePermissions(
-//                        permissions = listOf(
-//                            Manifest.permission.POST_NOTIFICATIONS,
-//                            Manifest.permission.READ_CONTACTS,
-//                            Manifest.permission.CAMERA,
-//                            Manifest.permission.RECORD_AUDIO
-//                        )
-//                    )
 
-
-                    //Connectivity check
-//                    val status by connectivityObserver.observer().collectAsState(
-//                        initial = ConnectivityObserver.Status.Unavailable
-//                    )
-//                    Box(
-//                        modifier = Modifier.fillMaxSize(),
-//                        contentAlignment = Alignment.BottomCenter
-//                    ) {
-//                        val context = LocalContext.current
-//                        Text(
-//                            modifier = Modifier.clickable {
-//                                Toast.makeText(
-//                                    context,
-//                                    "Clickable..............",
-//                                    Toast.LENGTH_LONG
-//                                ).show()
-//                            },
-//                            text = "Network Status $status"
-//                        )
-//                    }
 
 //                    if (showDialog) {
 //                        BottomSheetDialog(
@@ -144,6 +154,52 @@ class PermissionActivity : ComponentActivity() {
         }
     }
 }
+
+
+@Composable
+private fun AlertButton() {
+    val showDialog = remember { mutableStateOf(false) }
+    if (showDialog.value) {
+        alert(msg = "Hello, this is an alert dialog!",
+            showDialog = showDialog.value,
+            onDismiss = { showDialog.value = false })
+    }
+    Column(
+        modifier = Modifier,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        //Text("Click the button to show an alert!")
+        Button(
+            modifier = Modifier,
+            onClick = { showDialog.value = true }
+        ) {
+            Text("Click")
+        }
+    }
+}
+
+@Composable
+fun alert(
+    msg: String,
+    showDialog: Boolean,
+    onDismiss: () -> Unit
+) {
+    if (showDialog) {
+        AlertDialog(
+            title = {
+                Text(msg)
+            },
+            onDismissRequest = onDismiss,
+            confirmButton = {
+                TextButton(onClick = onDismiss) {
+                    Text("Dismiss")
+                }
+            },
+            dismissButton = {}
+        )
+    }
+}
+
 
 @Composable
 fun ShowCustomDialog() {
@@ -185,13 +241,12 @@ fun ShowCustomDialog() {
     }
     //}
 }
-
-
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview2() {
     JetPackComposePracticeTheme {
-        BottomSheet()
+        //BottomSheet()
+        AlertButton()
     }
 }
 
@@ -288,3 +343,5 @@ fun DefaultPreview2() {
 //    }
 //
 //}
+
+

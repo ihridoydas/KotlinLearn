@@ -6,7 +6,7 @@ buildscript {
         retrofitVersion = '2.9.0'
         kotlin_version = "1.7.0"
         accompanist_version = '0.26.1-alpha'
-        lifecycle_version = "2.4.0"
+        lifecycle_version = "2.3.0-alpha01"
         material3_version = "1.0.0-alpha14"
         ktx_coroutine_version = '1.6.1'
         camerax_version = '1.0.1'

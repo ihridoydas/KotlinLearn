@@ -30,7 +30,7 @@ fun BottomSheet() {
     val scope = rememberCoroutineScope()
     BottomSheetScaffold(
         scaffoldState = scaffoldState,
-        backgroundColor = Color.Blue,
+        backgroundColor = Color.Transparent,
         sheetGesturesEnabled = false,
         drawerGesturesEnabled = false,
         sheetShape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
