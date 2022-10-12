@@ -57,7 +57,7 @@ fun CustomAlertDialog(onDismiss: () -> Unit, onExit: () -> Unit) {
 
                     Image(
                         painter = painterResource(id = R.drawable.myname),
-                        contentDescription = "Exit app",
+                        contentDescription = "Top Image",
                         modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.FillWidth
                     )
@@ -65,7 +65,7 @@ fun CustomAlertDialog(onDismiss: () -> Unit, onExit: () -> Unit) {
 
                 Text(
                     text = "Lorem Ipsum is simply dummy text",
-                    modifier = Modifier.padding(8.dp), fontSize = 20.sp
+                    modifier = Modifier.padding(top = 120.dp), fontSize = 20.sp
                 )
 
                 Text(

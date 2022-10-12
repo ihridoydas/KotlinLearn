@@ -1,17 +1,12 @@
 package com.example.jetpackcomposepractice.nestedNavigation.graphs
 
-import android.app.Activity
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.example.jetpackcomposepractice.nestedNavigation.PracticeScreen
+import com.example.jetpackcomposepractice.PracticeScreen
 import com.example.jetpackcomposepractice.nestedNavigation.screens.LoginContent
 import com.example.jetpackcomposepractice.nestedNavigation.screens.ScreenContent
-import com.example.jetpackcomposepractice.screen.HomeScreen
-import com.example.jetpackcomposepractice.screen.SetupNavGraph
 
 
 fun NavGraphBuilder.authNavGraph(navController: NavHostController) {

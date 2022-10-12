@@ -1,18 +1,12 @@
-package com.example.jetpackcomposepractice.nestedNavigation
+package com.example.jetpackcomposepractice
 
-import android.app.Activity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Button
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionContext
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
-import androidx.navigation.NavHostController
-import com.example.jetpackcomposepractice.screen.SetupNavGraph
+import com.example.jetpackcomposepractice.ui.util.sideEffect.SideEffect
 
 @Composable
 fun PracticeScreen(
@@ -22,6 +16,8 @@ fun PracticeScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
+        //Practice side Effect on jetpack compose (in Util section)
+        SideEffect()
 
     }
 }
