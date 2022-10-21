@@ -14,6 +14,7 @@
     <string name="title_activity_paging3">Paging3Activity</string>
     <string name="title_activity_boarding_with_splash_screen">BoardingWithSplashScreen</string>
     <string name="title_activity_permission">PermissionActivity</string>
+    <string name="title_activity_notification">NotificationActivity</string>
 
 
 </resources>

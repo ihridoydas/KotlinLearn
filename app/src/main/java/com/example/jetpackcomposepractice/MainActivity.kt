@@ -61,6 +61,7 @@ import com.example.jetpackcomposepractice.feature_note.NoteActivity
 import com.example.jetpackcomposepractice.learnTesting.TestingActivity
 import com.example.jetpackcomposepractice.navigationPassingDataNavHost.PassingDataNavHost
 import com.example.jetpackcomposepractice.nestedNavigation.NestedNavigation
+import com.example.jetpackcomposepractice.notification.localNotification.NotificationActivity
 import com.example.jetpackcomposepractice.onboardingCompose.BoardingWithSplashScreen
 import com.example.jetpackcomposepractice.paging3.Paging3Activity
 import com.example.jetpackcomposepractice.permissionAndConnectivityCheck.PermissionActivity
@@ -293,6 +294,12 @@ class MainActivity : ComponentActivity() {
                                 Intent(this@MainActivity, PermissionActivity::class.java)
                             startActivity(navigate)
                         }, text = "Permission & Connectivity Check")
+
+                        DisplayButton(onClick = {
+                            val navigate =
+                                Intent(this@MainActivity, NotificationActivity::class.java)
+                            startActivity(navigate)
+                        }, text = "Notification(Local and Push)")
 
 
                     }
