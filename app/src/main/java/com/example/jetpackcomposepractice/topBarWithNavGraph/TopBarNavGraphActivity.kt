@@ -23,9 +23,9 @@ import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
-import com.example.jetpackcomposepractice.casecadeMenu.casecade.CascadeMenu
-import com.example.jetpackcomposepractice.casecadeMenu.casecade.CascadeMenuItem
-import com.example.jetpackcomposepractice.casecadeMenu.casecade.cascadeMenu
+import com.example.jetpackcomposepractice.casecadeMenuAndButtonEffect.casecade.CascadeMenu
+import com.example.jetpackcomposepractice.casecadeMenuAndButtonEffect.casecade.CascadeMenuItem
+import com.example.jetpackcomposepractice.casecadeMenuAndButtonEffect.casecade.cascadeMenu
 import com.example.jetpackcomposepractice.topBarWithNavGraph.ui.theme.JetPackComposePracticeTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.channels.Channel

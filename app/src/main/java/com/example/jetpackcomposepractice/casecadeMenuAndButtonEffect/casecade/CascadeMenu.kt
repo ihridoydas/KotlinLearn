@@ -1,4 +1,4 @@
-package com.example.jetpackcomposepractice.casecadeMenu.casecade
+package com.example.jetpackcomposepractice.casecadeMenuAndButtonEffect.casecade
 
 import androidx.compose.animation.*
 import androidx.compose.foundation.background

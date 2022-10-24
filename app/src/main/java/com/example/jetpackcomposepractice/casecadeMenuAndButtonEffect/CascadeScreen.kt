@@ -1,4 +1,4 @@
-package com.example.jetpackcomposepractice.casecadeMenu
+package com.example.jetpackcomposepractice.casecadeMenuAndButtonEffect
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
@@ -14,9 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
-import com.example.jetpackcomposepractice.casecadeMenu.casecade.CascadeMenu
-import com.example.jetpackcomposepractice.casecadeMenu.casecade.CascadeMenuItem
-import com.example.jetpackcomposepractice.casecadeMenu.casecade.cascadeMenu
+import com.example.jetpackcomposepractice.casecadeMenuAndButtonEffect.casecade.CascadeMenu
+import com.example.jetpackcomposepractice.casecadeMenuAndButtonEffect.casecade.CascadeMenuItem
+import com.example.jetpackcomposepractice.casecadeMenuAndButtonEffect.casecade.cascadeMenu
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 

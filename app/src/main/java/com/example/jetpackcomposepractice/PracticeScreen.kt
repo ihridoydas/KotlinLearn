@@ -16,8 +16,33 @@ fun PracticeScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
-        //Practice side Effect on jetpack compose (in Util section)
-        SideEffect()
+        Column {
+            //Practice side Effect on jetpack compose (in Util section)
+            SideEffect()
+
+            /*
+
+            //Button Effect
+            //Animated Shape Touch
+            AnimatedShapeTouch()
+
+            //Ripple effect
+            NoRippleEffect1()
+            NoRippleEffect2()
+            NoRippleEffect3()
+
+            //PulsateEffect
+            PulsateEffect()
+
+            //Press Button
+            PressEffect()
+
+            //Shake Effect
+            ShakeEffect()
+
+             */
+
+        }
 
     }
 }
