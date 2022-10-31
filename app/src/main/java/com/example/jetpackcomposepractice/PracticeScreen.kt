@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.example.jetpackcomposepractice.ui.util.sideEffect.SideEffect
+import com.example.jetpackcomposepractice.lifecycleAndSideEffect.sideEffect.SideEffect
 
 @Composable
 fun PracticeScreen(

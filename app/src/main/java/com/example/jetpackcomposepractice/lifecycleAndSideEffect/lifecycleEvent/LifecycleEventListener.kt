@@ -1,17 +1,25 @@
-package com.example.jetpackcomposepractice.ui.util.sideEffect
+/*
+ * Created by hridoydas on 2022/10/12
+ * Last modified 10/12/22, 10:56 AM
+ * Copyright © 2022 Hridoy Das Inc. All rights reserved.
+ */
+
+package com.example.jetpackcomposepractice.lifecycleAndSideEffect.lifecycleEvent
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 
+//Custom LifeCycle Event
 @Composable
-fun DisposableEffect(OnEvent: (event: Lifecycle.Event) -> Unit) {
+fun LifecycleEventListener(OnEvent: (event: Lifecycle.Event) -> Unit) {
     val eventHandler = rememberUpdatedState(newValue = OnEvent)
     val lifecycleOwner = rememberUpdatedState(newValue = LocalLifecycleOwner.current)
 
-    androidx.compose.runtime.DisposableEffect(key1 = lifecycleOwner.value) {
+    DisposableEffect(key1 = lifecycleOwner.value) {
         val lifecycle = lifecycleOwner.value.lifecycle
         val observer = LifecycleEventObserver { source, event ->
             eventHandler.value(event)
@@ -29,7 +37,7 @@ fun DisposableEffect(OnEvent: (event: Lifecycle.Event) -> Unit) {
 
 @Composable
 fun ImplementLifecycleEvent() {
-    com.example.jetpackcomposepractice.lifecycleAndSideEffect.sideEffect.DisposableEffect {
+    LifecycleEventListener {
         when (it) {
             Lifecycle.Event.ON_CREATE -> {
                 //TODO: add What you want

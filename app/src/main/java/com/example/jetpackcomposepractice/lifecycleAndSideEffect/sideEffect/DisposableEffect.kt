@@ -1,4 +1,4 @@
-package com.example.jetpackcomposepractice.ui.util.sideEffect
+package com.example.jetpackcomposepractice.lifecycleAndSideEffect.sideEffect
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberUpdatedState
@@ -29,7 +29,7 @@ fun DisposableEffect(OnEvent: (event: Lifecycle.Event) -> Unit) {
 
 @Composable
 fun ImplementLifecycleEvent() {
-    com.example.jetpackcomposepractice.lifecycleAndSideEffect.sideEffect.DisposableEffect {
+    DisposableEffect {
         when (it) {
             Lifecycle.Event.ON_CREATE -> {
                 //TODO: add What you want

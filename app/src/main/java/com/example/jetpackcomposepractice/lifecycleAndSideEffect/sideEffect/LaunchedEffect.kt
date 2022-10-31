@@ -1,4 +1,4 @@
-package com.example.jetpackcomposepractice.ui.util.sideEffect
+package com.example.jetpackcomposepractice.lifecycleAndSideEffect.sideEffect
 
 import android.widget.Toast
 import androidx.compose.runtime.Composable
@@ -11,7 +11,7 @@ fun LaunchedEffect() {
     //How you use the LaunchEffect(run suspend functions in the scope of a composable)
     LaunchedEffect(key1 = Unit, block = {
         try {
-            com.example.jetpackcomposepractice.lifecycleAndSideEffect.sideEffect.startTimer(4000L) {
+            startTimer(4000L) {
                 Toast.makeText(context, "Timer Started", Toast.LENGTH_SHORT).show()
             }
         } catch (ex: Exception) {

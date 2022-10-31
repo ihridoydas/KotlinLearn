@@ -1,4 +1,4 @@
-package com.example.jetpackcomposepractice.ui.util.sideEffect
+package com.example.jetpackcomposepractice.lifecycleAndSideEffect.sideEffect
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
@@ -29,9 +29,7 @@ fun RememberCoroutineScope() {
                 Toast.makeText(context, "Timer Started", Toast.LENGTH_SHORT).show()
                 job = scope.launch {
                     try {
-                        com.example.jetpackcomposepractice.lifecycleAndSideEffect.sideEffect.startTimer(
-                            5000L
-                        ) {
+                        startTimer(5000L) {
                             Toast.makeText(context, "Timer Ended", Toast.LENGTH_SHORT).show()
                         }
 

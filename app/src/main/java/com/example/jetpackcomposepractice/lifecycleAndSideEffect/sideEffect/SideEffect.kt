@@ -4,7 +4,7 @@
  * Copyright © 2022 Hridoy Das Inc. All rights reserved.
  */
 
-package com.example.jetpackcomposepractice.ui.util.sideEffect
+package com.example.jetpackcomposepractice.lifecycleAndSideEffect.sideEffect
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -62,9 +62,7 @@ fun SideEffect() {
 
     //Six
     //produceState: convert non-Compose state into Compose state
-    com.example.jetpackcomposepractice.lifecycleAndSideEffect.sideEffect.NonComposeStateToComposeState(
-        1000
-    )
+    NonComposeStateToComposeState(1000)
 
 }
 

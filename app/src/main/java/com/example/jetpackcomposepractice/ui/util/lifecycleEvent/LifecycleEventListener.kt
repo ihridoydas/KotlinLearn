@@ -37,7 +37,7 @@ fun LifecycleEventListener(OnEvent: (event: Lifecycle.Event) -> Unit) {
 
 @Composable
 fun ImplementLifecycleEvent() {
-    LifecycleEventListener {
+    com.example.jetpackcomposepractice.lifecycleAndSideEffect.lifecycleEvent.LifecycleEventListener {
         when (it) {
             Lifecycle.Event.ON_CREATE -> {
                 //TODO: add What you want

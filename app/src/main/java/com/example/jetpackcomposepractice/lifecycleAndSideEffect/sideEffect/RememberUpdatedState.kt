@@ -1,4 +1,4 @@
-package com.example.jetpackcomposepractice.ui.util.sideEffect
+package com.example.jetpackcomposepractice.lifecycleAndSideEffect.sideEffect
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
@@ -31,7 +31,7 @@ fun RememberUpdatedState() {
         ) {
             Text(text = "RememberUpdatedState Second")
         }
-        com.example.jetpackcomposepractice.lifecycleAndSideEffect.sideEffect.UpdateTimer(buttonText = buttonText)
+        UpdateTimer(buttonText = buttonText)
     }
 
 }
@@ -43,9 +43,7 @@ fun UpdateTimer(buttonText: String) {
     println("Composing timer with text : $buttonText")
 
     LaunchedEffect(key1 = Unit, block = {
-        com.example.jetpackcomposepractice.lifecycleAndSideEffect.sideEffect.startTimer(
-            timerDuration
-        ) {
+        startTimer(timerDuration) {
             println("Timer Ended")
             println("Last Button text was $buttonText")
             println("Last Button text using rememberUpdatedState : $updateButtonText")
