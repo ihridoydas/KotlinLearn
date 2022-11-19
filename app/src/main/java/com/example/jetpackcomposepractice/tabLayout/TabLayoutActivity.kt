@@ -104,9 +104,10 @@ fun Tabs(pagerState: PagerState) {
         selectedTabIndex = pagerState.currentPage,
         backgroundColor = TabColorOne,
         contentColor = Color.White,
+
         divider = {
-            TabRowDefaults.Divider(
-                thickness = 3.dp,
+            TabRowDefaults.Indicator(
+                //thickness = 3.dp,
                 color = Color.White
             )
         },

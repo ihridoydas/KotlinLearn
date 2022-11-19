@@ -58,6 +58,7 @@ import coil.request.ImageRequest
 import com.example.jetpackcomposepractice.albumFeature.AlbumDetailsActivity
 import com.example.jetpackcomposepractice.customUI.CustomComponent
 import com.example.jetpackcomposepractice.feature_note.NoteActivity
+import com.example.jetpackcomposepractice.jetpackPagination.PaginationActivtiy
 import com.example.jetpackcomposepractice.learnTesting.TestingActivity
 import com.example.jetpackcomposepractice.navigationPassingDataNavHost.PassingDataNavHost
 import com.example.jetpackcomposepractice.nestedNavigation.NestedNavigation
@@ -301,6 +302,11 @@ class MainActivity : ComponentActivity() {
                             startActivity(navigate)
                         }, text = "Notification(Local and Push)")
 
+                        DisplayButton(onClick = {
+                            val navigate =
+                                Intent(this@MainActivity, PaginationActivtiy::class.java)
+                            startActivity(navigate)
+                        }, text = "Jetpack Pagination")
 
                     }
 

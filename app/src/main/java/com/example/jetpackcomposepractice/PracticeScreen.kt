@@ -1,48 +1,57 @@
 package com.example.jetpackcomposepractice
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import com.example.jetpackcomposepractice.lifecycleAndSideEffect.sideEffect.SideEffect
+import com.example.jetpackcomposepractice.customDialog.DialogSample
+import com.example.jetpackcomposepractice.ui.theme.JetPackComposePracticeTheme
 
 @Composable
-fun PracticeScreen(
-) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top
-    ) {
-        Column {
-            //Practice side Effect on jetpack compose (in Util section)
-            SideEffect()
+fun PracticeScreen(content: @Composable () -> Unit) {
 
-            /*
+    JetPackComposePracticeTheme {
+        Surface(color = MaterialTheme.colors.background) {
 
-            //Button Effect
-            //Animated Shape Touch
-            AnimatedShapeTouch()
 
-            //Ripple effect
-            NoRippleEffect1()
-            NoRippleEffect2()
-            NoRippleEffect3()
-
-            //PulsateEffect
-            PulsateEffect()
-
-            //Press Button
-            PressEffect()
-
-            //Shake Effect
-            ShakeEffect()
-
-             */
-
+            //content()
+            DialogSample()
         }
 
     }
+
+
+//    Column(
+//        modifier = Modifier.fillMaxSize(),
+//        horizontalAlignment = Alignment.CenterHorizontally,
+//        verticalArrangement = Arrangement.Top
+//    ) {
+//        Column {
+//            //Practice side Effect on jetpack compose (in Util section)
+//            //SideEffect()
+//
+//            /*
+//
+//            //Button Effect
+//            //Animated Shape Touch
+//            AnimatedShapeTouch()
+//
+//            //Ripple effect
+//            NoRippleEffect1()
+//            NoRippleEffect2()
+//            NoRippleEffect3()
+//
+//            //PulsateEffect
+//            PulsateEffect()
+//
+//            //Press Button
+//            PressEffect()
+//
+//            //Shake Effect
+//            ShakeEffect()
+//
+//             */
+//
+//        }
+//
+//    }
 }

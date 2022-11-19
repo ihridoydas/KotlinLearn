@@ -15,8 +15,8 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.jetpackcomposepractice.retrofitAPI.model.Post
-import com.example.jetpackcomposepractice.retrofitAPI.ui.viewModel.DataViewModel
 import com.example.jetpackcomposepractice.retrofitAPI.ui.theme.JetPackComposePracticeTheme
+import com.example.jetpackcomposepractice.retrofitAPI.ui.viewModel.DataViewModel
 import com.example.jetpackcomposepractice.retrofitAPI.utils.ApiState
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -61,26 +61,28 @@ class RetrofitActivity : ComponentActivity() {
     fun GetData(dataViewModel: DataViewModel){
 
         when (val result = dataViewModel.response.value){
-            is ApiState.Success->{
-                LazyColumn{
-                    items(result.data){reponse->
+            is ApiState.Success -> {
+                LazyColumn {
+                    items(result.data) { reponse ->
                         EachRow(reponse)
                     }
                 }
             }
-            is ApiState.Failure->{
+            is ApiState.Failure -> {
                 Text(text = "${result.msg}")
             }
-            ApiState.Loading->{
-                Box(modifier = Modifier.fillMaxSize(),
+            is ApiState.Loading -> {
+                Box(
+                    modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ) {
                     CircularProgressIndicator()
                 }
             }
-            ApiState.Empty->{}
+            is ApiState.Empty -> {}
         }
 
     }
 }
+
 
