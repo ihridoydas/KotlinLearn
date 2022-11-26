@@ -3,7 +3,7 @@ package com.example.jetpackcomposepractice
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import com.example.jetpackcomposepractice.customDialog.DialogSample
+import com.example.jetpackcomposepractice.stickyHeaderWithLazyColumn.StickyHeaderScreen
 import com.example.jetpackcomposepractice.ui.theme.JetPackComposePracticeTheme
 
 @Composable
@@ -12,9 +12,10 @@ fun PracticeScreen(content: @Composable () -> Unit) {
     JetPackComposePracticeTheme {
         Surface(color = MaterialTheme.colors.background) {
 
+            StickyHeaderScreen()
 
             //content()
-            DialogSample()
+            //  DialogSample()
         }
 
     }
