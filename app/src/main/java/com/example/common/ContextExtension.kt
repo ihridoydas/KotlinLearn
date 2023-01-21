@@ -1,10 +1,5 @@
-/*
- * Created by masaki on 2022/09/26
- * Last modified 2022/09/14 11:22
- * Copyright © 2022 Cognivision Inc. All rights reserved.
- */
 
-package jp.cognivision.cpbmobile.util.extensions
+package com.example.common
 
 import android.app.Activity
 import android.content.Context
@@ -16,10 +11,6 @@ import java.util.concurrent.Executor
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-/**
- * Created by DavidA on 2022/05/17.
- * Copyright © 2022 Cognivision inc. All rights reserved.
- */
 
 /**
  * Find Activity on Context

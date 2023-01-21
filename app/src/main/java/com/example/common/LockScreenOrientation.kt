@@ -4,18 +4,14 @@
  * Copyright © 2022 Cognivision Inc. All rights reserved.
  */
 
-package jp.cognivision.cpbmobile.util.common
+package com.example.common
 
 import android.content.pm.ActivityInfo
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.ui.platform.LocalContext
-import jp.cognivision.cpbmobile.util.extensions.findActivity
 
-/**
- * Created by DavidA on 2022/05/17.
- * Copyright © 2022 Cognivision inc. All rights reserved.
- */
+
 
 var originalOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 /**

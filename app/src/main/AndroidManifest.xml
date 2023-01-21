@@ -98,6 +98,7 @@
         <activity
             android:name=".nestedNavigation.NestedNavigation"
             android:exported="false"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity_nested_navigation"
             android:theme="@style/Theme.JetPackComposePractice" />
         <activity
