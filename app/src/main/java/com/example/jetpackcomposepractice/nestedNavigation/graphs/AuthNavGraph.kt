@@ -59,7 +59,7 @@ fun NavGraphBuilder.authNavGraph(navController: NavHostController) {
             }
         }
         composable(route = AuthScreen.Practice.route) {
-            //ScreenContent(name = AuthScreen.Practice.route) {}
+            ScreenContent(name = AuthScreen.Practice.route) {}
             PracticeScreen {
                 // SetSticky()
                 //SList()
