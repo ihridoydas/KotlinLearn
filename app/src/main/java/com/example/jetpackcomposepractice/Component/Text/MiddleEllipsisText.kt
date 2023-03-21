@@ -1,13 +1,23 @@
 package com.example.jetpackcomposepractice.Component.Text
 
 
+import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.SubcomposeLayout
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -15,8 +25,11 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun MiddleEllipsisText(
@@ -81,8 +94,10 @@ fun MiddleEllipsisText(
                         repeat(text.lastIndex) {
                             val leftPosition = leftPoint
                             val rightPosition = text.lastIndex - rightPoint
-                            val leftTextBoundingBox = textLayoutResult!!.getBoundingBox(leftPosition)
-                            val rightTextBoundingBox = textLayoutResult!!.getBoundingBox(rightPosition)
+                            val leftTextBoundingBox =
+                                textLayoutResult!!.getBoundingBox(leftPosition)
+                            val rightTextBoundingBox =
+                                textLayoutResult!!.getBoundingBox(rightPosition)
 
                             // For multibyte string handling
                             if (leftTextWidth <= rightTextWidth && leftTextWidth + leftTextBoundingBox.width + rightTextWidth <= remainingWidth) {
@@ -131,3 +146,120 @@ fun MiddleEllipsisText(
 }
 
 
+@Composable
+private fun LocationLabelArea(locations: String) {
+    Row(
+        modifier = Modifier
+            .height(48.dp)
+            .padding(horizontal = 16.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        var additional by remember { mutableStateOf(10) }
+
+        Box(
+            modifier = Modifier.weight(1f)
+        ) {
+            Text(
+                text = locations,
+                modifier = Modifier.fillMaxWidth(),
+                overflow = TextOverflow.Ellipsis,
+                maxLines = 1,
+                onTextLayout = { textLayoutResult ->
+                    if (textLayoutResult.hasVisualOverflow) {
+                        val lineEndIndex = textLayoutResult.getLineEnd(
+                            lineIndex = 0,
+                            visibleEnd = true
+                        )
+                        additional = locations
+                            .substring(lineEndIndex)
+                            .count { it == ',' }
+                    }
+                },
+            )
+        }
+
+        if (additional != 0) {
+            CounterBadge(additionalLocationsCount = additional)
+        }
+    }
+}
+
+@Composable
+private fun CounterBadge(additionalLocationsCount: Int) {
+    Box(
+        modifier = Modifier
+            .padding(start = 8.dp)
+            .size(32.dp)
+            .clip(RoundedCornerShape(100))
+            .background(MaterialTheme.colors.onBackground.copy(alpha = 0.3f))
+    ) {
+        Text(
+            text = "+$additionalLocationsCount",
+            overflow = TextOverflow.Visible,
+            maxLines = 1,
+            modifier = Modifier
+                .align(Alignment.Center),
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun Preview() {
+    MaterialTheme {
+        Card(
+            Modifier.padding(16.dp),
+            border = BorderStroke(1.dp, MaterialTheme.colors.onSurface),
+        ) {
+            LocationLabelArea(
+                locations = "Some location, Some, Some location, Some location, Some locationSome location, Some, Some location, Some location, Some location"
+            )
+        }
+    }
+}
+
+
+@Composable
+fun ExpandableText(
+    text: String,
+    modifier: Modifier = Modifier,
+    maxLines: Int = Int.MAX_VALUE,
+    overflow: TextOverflow = TextOverflow.Ellipsis,
+) {
+    var isEllipsized by remember { mutableStateOf(false) }
+    var currentMaxLines by remember { mutableStateOf(maxLines) }
+
+    LaunchedEffect(isEllipsized) {
+        if (!isEllipsized) currentMaxLines = Int.MAX_VALUE
+    }
+
+    Text(
+        text = text,
+        modifier = modifier
+            .clickable(enabled = isEllipsized) { isEllipsized = !isEllipsized }
+            .animateContentSize(),
+        maxLines = currentMaxLines,
+        overflow = overflow,
+        onTextLayout = { result ->
+            isEllipsized = result.isLineEllipsized(result.lineCount - 1)
+        }
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun PreviewExpandableText() {
+    MaterialTheme {
+        Card(
+            Modifier.padding(16.dp),
+            border = BorderStroke(1.dp, MaterialTheme.colors.onSurface),
+        ) {
+            ExpandableText(
+                "hghjhgjhgigvhkjgkfkfdtydyrtstrdsthrdstrdtdyjtdfytdfytdytdyjtdytdytdytdfyjtdfyjtdytdfyjtdyjtdfyjtdjytdjydfydyt",
+                modifier = Modifier.padding(5.dp),
+                overflow = TextOverflow.Ellipsis,
+                maxLines = 1
+            )
+        }
+    }
+}

@@ -45,6 +45,7 @@ fun CounterScreen(
     Scaffold(scaffoldState = scaffoldState) {
         Column(
             modifier = modifier
+                .padding(it)
                 .fillMaxSize()
                 .padding(50.dp),
             verticalArrangement = Arrangement.SpaceEvenly
