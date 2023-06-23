@@ -2,7 +2,7 @@
 # Some Config for new Project(2022/7/27)
 # Lets setup XML(without Compose) Dependency
 
-## Plugins 
+## Plugins for java
 
 ```
 plugins {
